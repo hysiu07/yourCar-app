@@ -1,0 +1,14 @@
+nav {
+	position: fixed;
+	padding: 2%;
+	height: 8vh;
+	width: 100vw;
+	.nav-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0 auto;
+		max-width: 1200px;
+		height: 100%;
+	}
+}

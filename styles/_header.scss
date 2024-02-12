@@ -1,0 +1,28 @@
+.header {
+	width: 100vw;
+	height: 90vh;
+	padding: 2%;
+	background-image: linear-gradient(180deg, #ebebeb 100%, #fdfbfb 0%);
+	&__container {
+		&__heading-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			max-width: 500px;
+			p {
+				font-size: 1.8rem;
+			}
+		}
+
+		height: 100%;
+		img {
+			position: absolute;
+			right: -150px;
+			top: 200px;
+			height: 500px;
+			width: 900px;
+		}
+	}
+}
