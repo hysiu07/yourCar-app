@@ -1,8 +1,11 @@
+@import 'variabels';
+
 nav {
 	position: fixed;
 	padding: 2%;
 	height: 8vh;
 	width: 100vw;
+	font-family: 'Roboto Condensed', sans-serif;
 	.nav-container {
 		display: flex;
 		justify-content: space-between;
@@ -10,5 +13,63 @@ nav {
 		margin: 0 auto;
 		max-width: 1200px;
 		height: 100%;
+
+		.nav-logo {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+			color: black;
+			&__title {
+				margin-left: 10px;
+				font-size: 2rem;
+			}
+		}
+		.nav-btn {
+			padding: 5px;
+			cursor: pointer;
+		}
+		.nav-links {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			.decor-line {
+				display: inline-block;
+				width: 4px;
+				height: 30px;
+				background-color: $gray-color;
+				border-radius: 40px;
+			}
+			a {
+				margin: 0 20px;
+				text-decoration: none;
+				font-size: 1.6rem;
+				color: black;
+			}
+			a:hover {
+				color: $gray-color;
+			}
+		}
+	}
+}
+
+@media (max-width: 996px) {
+	nav {
+		.nav-container {
+			.nav-btn {
+				display: inline-block;
+			}
+			.nav-links {
+				display: none;
+			}
+		}
+	}
+}
+@media (min-width: 996px) {
+	nav {
+		.nav-btn {
+			display: none;
+		}
 	}
 }

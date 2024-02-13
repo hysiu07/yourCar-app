@@ -1,3 +1,4 @@
+import SearchPanel from '@/components/SearchPanel';
 import React from 'react';
 
 export default function Header() {
@@ -8,13 +9,14 @@ export default function Header() {
 					<h1 className='main-title'>
 						Find, book, and rental car in <span>Easy</span> steps.
 					</h1>
-					<p className=''>
+					<h3 className=''>
 						Get car wherever and whenever you need it with your IOS or Android
 						device.
-					</p>
+					</h3>
 				</div>
-				<img src='/img/header-car.png' alt='' />
+				<img src='/img/header-car.png' alt='car-header' />
 			</div>
+			<SearchPanel />
 		</header>
 	);
 }

@@ -1,0 +1,9 @@
+$main-color: #3083FF;
+$h3-color: #929395;
+$gray-color: #929395;
+
+@mixin center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
