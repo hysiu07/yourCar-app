@@ -1,0 +1,33 @@
+.brands-section {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+    padding: 10px;
+	.car {
+		width: 60px;
+		height: 60px;
+		background-position: center;
+		background-size: cover;
+	}
+	.mazda {
+		background-image: url('../../../public/img/car-brands/mazda.jpg');
+	}
+	.bmw {
+		background-image: url('../../../public/img/car-brands/bmw.jpg');
+	}
+	.audi {
+		background-image: url('../../../public/img/car-brands/audi.jpg');
+	}
+	.ford {
+		background-image: url('../../../public/img/car-brands/ford.jpg');
+	}
+	.merc {
+		background-image: url('../../../public/img/car-brands/merc.jpg');
+	}
+	.nissan {
+		background-image: url('../../../public/img/car-brands/nissan.jpg');
+	}
+	.vw {
+		background-image: url('../../../public/img/car-brands/vw.jpg');
+	}
+}
