@@ -3,7 +3,8 @@ import Barands from '@/components/MainView/Brands';
 import Header from '@/components/MainView/Header';
 import HowWork from '@/components/MainView/HowWork';
 import WhyUs from '@/components/MainView/WhyUs';
-import MostPopular from '@/components/MainView/MostPopular'
+import MostPopular from '@/components/MainView/MostPopular';
+import Testimonials from '@/components/MainView/Testimonials';
 
 export default function Home() {
 	return (
@@ -14,6 +15,7 @@ export default function Home() {
 				<HowWork />
 				<WhyUs />
 				<MostPopular />
+				<Testimonials />
 			</main>
 		</BaseLayout>
 	);

@@ -6,6 +6,7 @@
 @import '../components/MainView/HowWork/howWork.scss';
 @import '../components//MainView/WhyUs/whyus.scss';
 @import '../components/MainView/MostPopular/most-popular.scss';
+@import '../components/MainView/Testimonials/testimonials.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
@@ -44,12 +45,12 @@ h3 {
 	margin-top: 15px;
 	font-size: 4rem;
 	font-family: 'Roboto Condensed', sans-serif;
+	margin-bottom: 30px;
 }
 h4 {
 	padding: 10px 0;
 	font-size: 1.8rem;
 	font-family: 'Roboto Condensed', sans-serif;
-
 }
 p {
 	color: $p-color;

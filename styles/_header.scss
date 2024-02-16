@@ -18,11 +18,11 @@
 			p {
 				font-size: 1.8rem;
 			}
-			h3 {
+			.second-title {
 				margin-top: 15px;
-				font-size: 2rem;
+				font-size: 2rem !important;
 				color: $second-title-color;
-				font-family: 'Dancing Script', cursive;
+				font-family: 'Dancing Script', cursive !important;
 			}
 		}
 

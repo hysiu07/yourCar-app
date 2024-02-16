@@ -9,7 +9,7 @@ export default function Header() {
 					<h1 className='main-title'>
 						Find, book, and rental car in <span>Easy</span> steps.
 					</h1>
-					<h3 className=''>
+					<h3 className='second-title'>
 						Get car wherever and whenever you need it with your IOS or Android
 						device.
 					</h3>
