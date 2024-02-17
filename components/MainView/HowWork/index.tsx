@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function HowWork() {
 	return (
-		<section className='how-work'>
+		<section className='how-work' id='how-work'>
 			<h2>HOW IT WORK</h2>
 			<h3>Rent with follwing 3 rorking steps</h3>
 			<div className='how-work__container'>

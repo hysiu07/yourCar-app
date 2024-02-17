@@ -1,0 +1,42 @@
+@import '../../../styles/variabels';
+
+nav {
+	position: fixed;
+	z-index: 2000;
+	padding: 2%;
+	height: 8vh;
+	width: 100vw;
+	font-family: 'Roboto Condensed', sans-serif;
+	transition: 0.3s;
+	.nav-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0 auto;
+		max-width: 1200px;
+		height: 100%;
+
+		.nav-btn {
+			padding: 5px;
+			cursor: pointer;
+		}
+	}
+}
+
+@media (max-width: 996px) {
+	nav {
+		.nav-container {
+			.nav-btn {
+				display: inline-block;
+			}
+			
+		}
+	}
+}
+@media (min-width: 996px) {
+	nav {
+		.nav-btn {
+			display: none;
+		}
+	}
+}

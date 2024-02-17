@@ -5,7 +5,7 @@ export default function Header() {
 	return (
 		<header className='header'>
 			<div className='header__container wrapper'>
-				<div className='header__container__heading-container'>
+				<div className='text-container'>
 					<h1 className='main-title'>
 						Find, book, and rental car in <span>Easy</span> steps.
 					</h1>

@@ -1,0 +1,12 @@
+.nav-logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: black;
+	&__title {
+		margin-left: 10px;
+		font-size: 2rem;
+		font-family: 'Roboto Condensed', sans-serif;
+	}
+}

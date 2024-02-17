@@ -1,0 +1,93 @@
+@import '../../../styles/variabels';
+.footer {
+	background-color: #1e242d;
+	padding: 50px 50px 0 50px;
+	.informations {
+		display: flex;
+		justify-content: space-around;
+		width: 90%;
+		padding-bottom: 20px;
+
+		.contact-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			p {
+				padding: 10px;
+			}
+			.number-phone {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding-bottom: 10px;
+				color: white;
+				font-weight: bold;
+				font-family: 'Roboto Condensed', sans-serif;
+				font-size: 2rem;
+				.phone-icon {
+					color: white;
+					margin-right: 10px;
+				}
+			}
+		}
+		.about-container,
+		.our-product-container {
+			display: flex;
+			flex-direction: column;
+
+			.title {
+				color: white;
+			}
+			.element {
+				margin-bottom: 5px;
+				font-size: 1.6rem;
+				color: white;
+				font-family: 'Roboto Condensed', sans-serif;
+				text-decoration: none;
+				transition: 0.3s;
+			}
+			.element:hover {
+				color: $gray-color;
+			}
+		}
+		.follow-us-container {
+			.title {
+				color: white;
+			}
+			.link {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				.link-icon {
+					color: white;
+					margin: 0 5px;
+					transition: 0.3s;
+				}
+				.link-icon:hover {
+					color: $gray-color;
+				}
+			}
+		}
+	}
+	.footer-copyright {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 10px;
+	}
+}
+
+@media (max-width: 768px) {
+	.footer {
+		padding: 20px 10px;
+	}
+}
+@media (max-width: 576px) {
+	.footer {
+		.informations {
+			flex-direction: column;
+		}
+	}
+}

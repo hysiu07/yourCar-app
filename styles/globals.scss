@@ -1,4 +1,11 @@
-@import 'nav';
+// components'
+@import '../components/MainView/Nav/NavLogo/navLogo.scss';
+@import '../components/CardCar/card-car.scss';
+@import '../components/OpinionCard/opinion-card.scss';
+@import '../components/MainView/Nav/NavLinks/navLinks.scss';
+
+// mainView
+@import '../components/MainView/Nav/nav.scss';
 @import 'header';
 @import 'variabels';
 @import '../components/SearchPanel/searchPanel.scss';
@@ -7,6 +14,7 @@
 @import '../components//MainView/WhyUs/whyus.scss';
 @import '../components/MainView/MostPopular/most-popular.scss';
 @import '../components/MainView/Testimonials/testimonials.scss';
+@import '../components/MainView/Footer/footer.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');

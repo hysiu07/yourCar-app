@@ -1,0 +1,69 @@
+.opinion-card {
+	display: flex !important;
+	justify-content: space-evenly;
+	height: 400px;
+	padding: 20px;
+
+	img {
+		width: 40%;
+		height: 100%;
+	}
+	.text-content {
+		width: 60%;
+		height: 100%;
+		padding: 20px;
+		.contain-opinion {
+			font-size: 2rem;
+		}
+		.name-author {
+			font-size: 2.5rem;
+		}
+		.rate-star {
+			display: flex;
+			justify-content: start;
+			align-items: center;
+			font-size: 2rem;
+			font-family: 'Roboto Condensed', sans-serif;
+			color: $gray-color;
+			.star {
+				margin-right: 10px;
+			}
+		}
+	}
+}
+@media (max-width: 768px) {
+	.opinion-card {
+		flex-direction: column;
+		height: 500px;
+		.text-content {
+			width: 100%;
+			.contain-opinion {
+				font-size: 1.8rem;
+			}
+		}
+		img {
+			width: 100%;
+			height: 50%;
+		}
+	}
+}
+@media (max-width: 576px) {
+	.opinion-card {
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 0;
+		.text-content {
+			padding: 5px;
+			.contain-opinion {
+				font-size: 1.5rem;
+			}
+			.name-author {
+				font-size: 2rem;
+			}
+		}
+		img {
+			width: 100%;
+			height: 50%;
+		}
+	}
+}

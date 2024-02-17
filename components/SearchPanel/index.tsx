@@ -14,7 +14,7 @@ export default function SearchPanel() {
 		<div className='search-panel'>
 			<form action='Find your car'>
 				<div className='form-item'>
-					<label htmlFor='location'>Location</label>
+					<label htmlFor='location'>Location:</label>
 					<select name='location' id=''>
 						Select your location
 						<option value='krakow'>Krakow</option>
@@ -25,7 +25,7 @@ export default function SearchPanel() {
 					</select>
 				</div>
 				<div className='form-item'>
-					<label htmlFor='date-pickup'>Pickup date</label>
+					<label htmlFor='date-pickup'>Pickup date:</label>
 					<input
 						type='date'
 						name='pickup-date'
@@ -37,7 +37,7 @@ export default function SearchPanel() {
 					/>
 				</div>
 				<div className='form-item'>
-					<label htmlFor='date-return'>Return date</label>
+					<label htmlFor='date-return'>Return date:</label>
 					<input
 						type='date'
 						name='return-date'

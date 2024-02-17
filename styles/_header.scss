@@ -8,7 +8,7 @@
 		position: relative;
 		height: 100%;
 		width: 100%;
-		&__heading-container {
+		.text-container {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -20,7 +20,7 @@
 			}
 			.second-title {
 				margin-top: 15px;
-				font-size: 2rem !important;
+				font-size: 2rem;
 				color: $second-title-color;
 				font-family: 'Dancing Script', cursive !important;
 			}
@@ -29,9 +29,48 @@
 		img {
 			position: absolute;
 			right: -300px;
-			top: 150px;
+			top: 200px;
 			height: 500px;
 			width: 900px;
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	.header {
+		.wrapper {
+			width: 100%;
+		}
+		&__container {
+			.text-container {
+				margin: 0 auto;
+				width: none;
+			}
+			img {
+				display: none;
+			}
+		}
+	}
+}
+@media (max-width: 768px) {
+	.header {
+		&__container {
+			.text-container {
+				position: relative;
+				bottom: 100px;
+			}
+		}
+	}
+}
+@media (max-width: 576px) {
+	.header {
+		padding: 30px;
+		&__container {
+			.text-container {
+				.main-title {
+					font-size: 5rem;
+				}
+			}
 		}
 	}
 }

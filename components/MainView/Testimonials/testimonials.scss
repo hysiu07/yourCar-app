@@ -1,13 +1,13 @@
+@import '../../../styles/variabels';
+
 .testimonials {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	height: 600px;
-	padding: 50px;
-	float: none;
+	padding: 40px;
+
 	.slider-container {
-		height: 600px;
 		width: 100%;
 
 		.slick-slide {
@@ -16,34 +16,10 @@
 		.slider {
 			margin: 0 auto;
 			width: 60%;
-			padding: 40px;
+			max-width: 800px;
+			padding: 20px;
 			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-			.item {
-				display: flex !important;
-				justify-content: space-evenly;
 
-				padding: 20px;
-
-				img {
-					width: 40%;
-					height: 100%;
-					background-image: url('/img/mercedes.jpg');
-					background-position: center;
-					background-size: cover;
-				}
-				.text-content {
-					width: 60%;
-					height: 100%;
-					padding: 20px;
-				}
-			}
-			// .slick-arrow {
-			// 	padding: 10px;
-			// 	width: 50px;
-			// 	height: 40px;
-			// 	background-color: black;
-
-			// }
 			.slick-next:before,
 			.slick-prev:before {
 				position: relative;
@@ -53,6 +29,16 @@
 			}
 			.slick-prev:before {
 				right: 30px;
+			}
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	.testimonials {
+		.slider-container {
+			.slider {
+				width: 80%;
 			}
 		}
 	}
