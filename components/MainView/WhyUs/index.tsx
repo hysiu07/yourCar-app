@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function WhyUs() {
 	return (
-		<section className='why-us'>
+		<section className='why-us' id='why-us'>
 			<div className='why-us__img'>
 				<div className='background-map'>
 					<div className='car-img'></div>

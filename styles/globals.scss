@@ -1,8 +1,9 @@
 // components'
 @import '../components/MainView/Nav/NavLogo/navLogo.scss';
-@import '../components/CardCar/card-car.scss';
+@import '../components/CardCar-MainView/card-car.scss';
 @import '../components/OpinionCard/opinion-card.scss';
 @import '../components/MainView/Nav/NavLinks/navLinks.scss';
+@import '../components/CardCar-CarsPage/card-car-cars-page.scss';
 
 // mainView
 @import '../components/MainView/Nav/nav.scss';
@@ -15,6 +16,10 @@
 @import '../components/MainView/MostPopular/most-popular.scss';
 @import '../components/MainView/Testimonials/testimonials.scss';
 @import '../components/MainView/Footer/footer.scss';
+
+// pages
+@import '../pages/cars/cars.scss';
+@import '../pages/cars/[id]/car-page.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
@@ -30,6 +35,7 @@ main {
 
 html {
 	font-size: 62.5%;
+	scroll-behavior: smooth;
 }
 html,
 body {
@@ -60,6 +66,10 @@ h4 {
 	font-size: 1.8rem;
 	font-family: 'Roboto Condensed', sans-serif;
 }
+h5{
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
 p {
 	color: $p-color;
 	font-size: 1.5rem;

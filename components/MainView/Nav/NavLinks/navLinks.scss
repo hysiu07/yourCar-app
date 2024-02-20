@@ -1,8 +1,10 @@
 .nav-links {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
+	transition: 0.5s;
 	.decor-line {
 		display: inline-block;
 		width: 4px;
@@ -11,13 +13,17 @@
 		border-radius: 40px;
 	}
 	a {
-		margin: 0 20px;
+		
+		padding: 10px 20px;
 		text-decoration: none;
 		font-size: 1.6rem;
 		color: black;
 	}
 	a:hover {
 		color: $gray-color;
+	}
+	.close-btn {
+		display: none;
 	}
 }
 @media (max-width: 992px) {
@@ -29,12 +35,7 @@
 		right: -3000px;
 		height: 100vh;
 		width: 50vw;
-		background-color: #ffffff;
-		background-image: linear-gradient(
-			315deg,
-			#ffffff 0%,
-			rgb(48, 131, 255) 74%
-		);
+		background-color: $main-color;
 		.decor-line {
 			display: none;
 		}
@@ -44,9 +45,21 @@
 			font-weight: bold;
 			color: white;
 			margin: 20px;
+			text-shadow: 2px 2px black;
 		}
 		a:hover {
 			color: none;
+		}
+		.close-btn {
+			display: flex;
+			position: absolute;
+			top: 30px;
+			left: 30px;
+			padding: 10px;
+			border-radius: 10px;
+			border: none;
+			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+			cursor: pointer;
 		}
 	}
 }

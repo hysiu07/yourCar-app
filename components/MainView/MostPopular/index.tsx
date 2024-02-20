@@ -1,10 +1,10 @@
 import React from 'react';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import Link from 'next/link';
-import CarCard from '@/components/CardCar';
+import CarCard from '@/components/CardCar-MainView';
 export default function MostPopular() {
 	return (
-		<section className='most-popular'>
+		<section className='most-popular' id='most-popular'>
 			<h2>POPULAR RENTAL DEALS</h2>
 			<h3>Most popular cars rental deals</h3>
 			<div className='most-popular__container'>

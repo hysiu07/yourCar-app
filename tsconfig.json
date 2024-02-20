@@ -10,12 +10,13 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
+     "noImplicitAny": false,
     "jsx": "preserve",
     "incremental": true,
     "paths": {
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "services/airtableClient.js"],
   "exclude": ["node_modules"]
 }

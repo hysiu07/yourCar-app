@@ -2,14 +2,14 @@ import React from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 type NavBtnPropsType = {
-	showMenuBtn: React.Dispatch<React.SetStateAction<boolean>>;
+	showMenuHandler: React.Dispatch<React.SetStateAction<boolean>>;
 };
-export default function NavBtn({ showMenuBtn }: NavBtnPropsType) {
+export default function NavBtn({ showMenuHandler }: NavBtnPropsType) {
 	return (
 		<div
 			className='nav-btn'
 			onClick={() => {
-				showMenuBtn();
+				showMenuHandler(true);
 			}}
 		>
 			<GiHamburgerMenu size={30} />

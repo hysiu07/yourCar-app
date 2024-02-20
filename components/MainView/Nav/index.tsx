@@ -31,8 +31,8 @@ export default function Nav() {
 		<nav style={scrolllY ? { background: 'white' } : undefined}>
 			<div className='nav-container'>
 				<NavLogo />
-				<NavLinks showMenu={showMenu} />
-				<NavBtn showMenuBtn={handlershowMenu} />
+				<NavLinks showMenu={showMenu} showMenuHandler={handlershowMenu} />
+				<NavBtn showMenuHandler={handlershowMenu} />
 			</div>
 		</nav>
 	);
