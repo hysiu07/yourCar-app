@@ -5,58 +5,76 @@
 	justify-content: center;
 	align-items: center;
 	padding: 40px;
-
 	height: 100vh;
 	width: 100vw;
 	background-color: #c3cbdc;
 	background-image: linear-gradient(147deg, #c3cbdc 0%, #edf1f4 74%);
 	overflow: scroll;
-	// background-image: linear-gradient(315deg, #36669d 0%, #d3d3d3 74%);
-	&__header {
-		display: flex;
-		justify-content: space-between;
-		width: 60%;
-		padding: 20px;
 
-		a {
-			@include center;
-			height: 30px;
-			width: 30px;
-			border: 1px solid black;
-			border-radius: 50%;
-		}
-	}
 	&__body {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		padding: 20px;
+		width: 60%;
+		max-width: 1200px;
 		background-color: white;
 		border-radius: 10px;
+
+		.car-info-box {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			.car-name {
+				font-size: 2.5rem;
+			}
+
+			.link-back-to-cars {
+				@include center;
+
+				height: 32px;
+				width: 32px;
+				text-decoration: none;
+
+				border-radius: 50%;
+				box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+				color: $main-color;
+				transition: 0.3s;
+			}
+			.link-back-to-cars:hover {
+				color: white;
+				background-color: $main-color;
+			}
+		}
 		hr {
 			width: 100%;
 		}
 		img {
-			width: 500px;
-			position: relative;
-			bottom: 180px;
+			position: absolute;
+			// bottom: 230px;
+			top: -200px;
+			width: 450px;
 		}
 		.car-name {
 			text-align: center;
 		}
 		.informations {
 			display: flex;
-			flex-wrap: wrap;
+			justify-content: space-around;
 			padding: 20px;
+			width: 100%;
 
 			.container {
 				margin-right: 60px;
+				width: 50%;
 				.box {
 					display: flex;
 					justify-content: start;
 					align-items: center;
 					margin-top: 10px;
 					.icon {
+						font-size: 30px;
 						margin-right: 5px;
 						color: $gray-color;
 					}
@@ -74,6 +92,55 @@
 			align-items: end;
 			width: 100%;
 			padding: 20px;
+			.price-text {
+				color: black;
+				font-size: 2rem;
+				font-weight: bold;
+			}
+			.price {
+				font-size: 2.8rem;
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.car-page {
+		padding: 0;
+		&__body {
+			width: 100vw;
+			height: 100vh;
+			border-radius: 0;
+			overflow: scroll;
+
+			img {
+				position: relative;
+				top: -50px;
+				bottom: 60px;
+			}
+
+			.informations {
+				flex-wrap: wrap;
+				width: 100%;
+				padding: 20px;
+				.container {
+					width: 100%;
+					margin: 0;
+					.box {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 576px) {
+	.car-page {
+		&__body {
+			img {
+				width: 100%;
+				bottom: 30px;
+			}
 		}
 	}
 }

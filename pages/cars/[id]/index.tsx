@@ -9,6 +9,7 @@ import { TbManualGearbox } from 'react-icons/tb';
 import { FaRegSnowflake } from 'react-icons/fa';
 import { GiConfirmed } from 'react-icons/gi';
 import { FaSuitcase } from 'react-icons/fa';
+import { AiOutlineClose } from 'react-icons/ai';
 
 export const getStaticPaths = async () => {
 	const cars = await getAllCars();
@@ -33,16 +34,15 @@ export default function CarPage({ car }) {
 
 	return (
 		<div className='car-page'>
-			<div className='car-page__header'>
-				<div className='car-info'>
-					<h4 className='car-name'>{car.name}</h4>
-					<h4 className='car-type'>{car.type}</h4>
-				</div>
-				<Link href={'/cars'}>X</Link>
-			</div>
 			<div className='car-page__body'>
+				<div className='car-info-box'>
+					<h4 className='car-name'>{car.name}</h4>
+					<Link href={'/cars'} className='link-back-to-cars'>
+						<AiOutlineClose size={20}/>
+					</Link>
+				</div>
 				<img src={car.img} alt='car-img' />
-				<h4 className='car-name'>{car.name}</h4>
+
 				<hr />
 				<div className='informations'>
 					<div className='container'>
@@ -70,22 +70,19 @@ export default function CarPage({ car }) {
 					</div>
 					<div className='container'>
 						<h4> Price Includes:</h4>
-						<div className='bag box'>
+						<div className='box'>
 							<GiConfirmed size={25} className='icon confirm' />
-							<p>
-								CDW (Collision Damage Waiver)/TP (Theft Protection) - Reduced
-								liability for damage or theft
-							</p>
+							<p>CDW</p>
 						</div>
-						<div className='bag box'>
+						<div className=' box'>
 							<GiConfirmed size={25} className='icon confirm' />
 							<p>Unlimited mileage</p>
 						</div>
-						<div className='bag box'>
+						<div className='box'>
 							<GiConfirmed size={25} className='icon confirm' />
 							<p>Free cancellation</p>
 						</div>
-						<div className='bag box'>
+						<div className='box'>
 							<GiConfirmed size={25} className='icon confirm' />
 							<p>TAX 25%</p>
 						</div>
@@ -94,7 +91,7 @@ export default function CarPage({ car }) {
 				<hr />
 				<div className='car-price-box'>
 					<p className='price-text'>Amount:</p>
-					<p className='price'>{car.price}</p>
+					<p className='price'>{car.price} $ / per Day</p>
 				</div>
 			</div>
 		</div>
