@@ -17,6 +17,7 @@
     "react-bootstrap": "^2.10.1",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "react-moving-text": "^0.0.7",
     "react-slick": "^0.30.1",
     "sass": "^1.70.0",
     "slick-carousel": "^1.8.1"

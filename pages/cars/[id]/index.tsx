@@ -1,6 +1,5 @@
 import getAllCars from '@/services/cars/getAllCars';
 import getCar from '@/services/cars/getCar';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import React from 'react';
 import { GiCarDoor } from 'react-icons/gi';
@@ -10,6 +9,7 @@ import { FaRegSnowflake } from 'react-icons/fa';
 import { GiConfirmed } from 'react-icons/gi';
 import { FaSuitcase } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
+import MovingText from 'react-moving-text';
 
 export const getStaticPaths = async () => {
 	const cars = await getAllCars();
@@ -30,18 +30,32 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export default function CarPage({ car }) {
-	const router = useRouter();
-
 	return (
 		<div className='car-page'>
+			<div className='animate'>
+				<ul className='background'>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
 			<div className='car-page__body'>
 				<div className='car-info-box'>
 					<h4 className='car-name'>{car.name}</h4>
 					<Link href={'/cars'} className='link-back-to-cars'>
-						<AiOutlineClose size={20}/>
+						<AiOutlineClose size={20} />
 					</Link>
 				</div>
-				<img src={car.img} alt='car-img' />
+			
+					<img src={car.img} alt='car-img' />
+			
 
 				<hr />
 				<div className='informations'>

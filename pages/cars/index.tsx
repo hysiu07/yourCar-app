@@ -11,16 +11,18 @@ export const getStaticProps = async () => {
 		},
 	};
 };
-export default function CarsPage({ cars }: any) {
+export default function CarsPage({ cars }) {
 	return (
 		<BaseLayout>
 			<section className='cars-page'>
 				{cars.map((car: any) => {
 					return (
-						<div className='card-cars-page'>
+						<div className='card-cars-page' key={car.id}>
 							<div className='card-cars-page__title'>
 								<h4 className='car-name'>{car.name}</h4>
-								<h5 className='car-type'>{car.type}</h5>
+								<h5 className='car-type'>
+									{car.type[0]} {car.type[1] && `/ ${car.type[1]}`}
+								</h5>
 							</div>
 							<img src={car.img} alt='car-img' />
 							<hr />
