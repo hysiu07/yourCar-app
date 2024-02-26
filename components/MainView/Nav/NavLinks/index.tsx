@@ -32,7 +32,7 @@ export default function NavLinks({
 			)}
 
 			<span className='decor-line'></span>
-			<Link className='sign-in-link' href='/signin'>
+			<Link className='logi-in-link' href='/login'>
 				Login
 			</Link>
 

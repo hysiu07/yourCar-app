@@ -9,7 +9,7 @@ import { FaRegSnowflake } from 'react-icons/fa';
 import { GiConfirmed } from 'react-icons/gi';
 import { FaSuitcase } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
-import MovingText from 'react-moving-text';
+
 
 export const getStaticPaths = async () => {
 	const cars = await getAllCars();
@@ -53,9 +53,8 @@ export default function CarPage({ car }) {
 						<AiOutlineClose size={20} />
 					</Link>
 				</div>
-			
-					<img src={car.img} alt='car-img' />
-			
+
+				<img src={car.img} alt='car-img' />
 
 				<hr />
 				<div className='informations'>
