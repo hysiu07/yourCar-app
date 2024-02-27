@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 import { useRouter } from 'next/router';
+
+import { useSession, signOut } from 'next-auth/react';
+
 type NavLinkPropsType = {
 	showMenu: boolean;
 	showMenuHandler: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,6 +14,8 @@ export default function NavLinks({
 	showMenu,
 	showMenuHandler,
 }: NavLinkPropsType) {
+	const { data, data: session } = useSession();
+
 	const router = useRouter();
 	const [showLinks, setShowLinks] = useState<boolean>(true);
 	useEffect(() => {
@@ -32,9 +37,21 @@ export default function NavLinks({
 			)}
 
 			<span className='decor-line'></span>
-			<Link className='logi-in-link' href='/login'>
-				Login
-			</Link>
+			{session ? (
+				<Link
+					className='logi-in-link'
+					href='/'
+					onClick={() => {
+						signOut();
+					}}
+				>
+					Sign out
+				</Link>
+			) : (
+				<Link className='logi-in-link' href='/login'>
+					Login
+				</Link>
+			)}
 
 			<button
 				className='close-btn'

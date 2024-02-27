@@ -8,7 +8,6 @@ const schema = Joi.object({
 });
 
 const authorize = async (payload) => {
-	console.log(payload, 'payload z authorize');
 	const { email, password } = await schema.validateAsync(payload);
 	const [user] = await airDB('users')
 		.select({ filterByFormula: `email="${email}"` })
@@ -22,15 +21,13 @@ const authorize = async (payload) => {
 		.pbkdf2Sync(password.toString(), passwordSalt, 1000, 64, 'sha512')
 		.toString('hex');
 
-
 	if (passwordHash !== user.fields.passwordHash) {
-		console.log('bledne haslo');
 		return null;
 	} else {
-		console.log('dobre haslo');
 	}
 
 	return {
+		id: user.id,
 		email: user.fields.email,
 		username: user.fields.username,
 		role: user.fields.role,
