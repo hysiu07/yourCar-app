@@ -1,37 +1,57 @@
-import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-
+interface Payload {
+	location: string;
+	pickUpDate: string;
+	returDate: string;
+}
 export default function SearchPanel() {
 	const router = useRouter();
 	const orderForm = useRef<null | any>(null);
-	const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+	const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 	const [tomorrowDate, setTomorrowDate] = useState<Date | null>();
+	const [error, setError] = useState<null | string>(null);
 
 	useEffect(() => {
 		const tomorrow = new Date();
 		tomorrow.setDate(tomorrow.getDate() + 1);
 		setTomorrowDate(tomorrow);
 	}, []);
+
 	const handleSearchCar = async (e) => {
 		e.preventDefault();
 		const form = new FormData(orderForm.current);
-		const payload = {
-			location: form.get('location'),
-			pickUpDate: form.get('pickup-date'),
-			returDate: form.get('return-date'),
+		const payload: Payload = {
+			location: form.get('location') as string,
+			pickUpDate: form.get('pickup-date') as string,
+			returDate: form.get('return-date') as string,
 		};
+
+		if (
+			payload.pickUpDate > payload.returDate ||
+			payload.pickUpDate < selectedDate.toISOString().split('T')[0]
+		) {
+			setError('Fail Date. Please correct your date!');
+			return;
+		} else {
+			setError(null);
+		}
 		if (payload.location && payload.pickUpDate && payload.returDate) {
-			router.push(
-				`/order/${payload.location}/${payload.pickUpDate}/${payload.returDate}`
-			);
+			router.push({
+				pathname: '/order/',
+				query: {
+					location: payload.location.toString(),
+					pickUpDate: payload.pickUpDate.toString(),
+					returDate: payload.returDate.toString(),
+				},
+			});
 		}
 	};
 
 	return (
 		<div className='search-panel'>
-			<form action='Find your car' ref={orderForm}>
+			<form ref={orderForm} onSubmit={handleSearchCar}>
 				<div className='form-item'>
 					<label htmlFor='location'>Location:</label>
 					<select name='location' id=''>
@@ -67,10 +87,9 @@ export default function SearchPanel() {
 						}
 					/>
 				</div>
-				<button type='submit' onSubmit={handleSearchCar}>
-					Search!
-				</button>
+				<button type='submit'>Search!</button>
 			</form>
+			<p className='error'>{error}</p>
 		</div>
 	);
 }

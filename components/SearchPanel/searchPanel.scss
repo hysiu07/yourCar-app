@@ -1,6 +1,7 @@
 @import '../../styles/variabels';
 
 .search-panel {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -48,6 +49,12 @@
 			background-color: $main-color;
 			cursor: pointer;
 		}
+	}
+	.error {
+		position: absolute;
+		top: 130px;
+		color: red;
+		font-size: 2rem;
 	}
 }
 @media (max-width: 768px) {
