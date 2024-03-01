@@ -9,7 +9,7 @@ import { FaRegSnowflake } from 'react-icons/fa';
 import { GiConfirmed } from 'react-icons/gi';
 import { FaSuitcase } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
-
+import { useRouter } from 'next/router';
 
 export const getStaticPaths = async () => {
 	const cars = await getAllCars();
@@ -30,6 +30,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export default function CarPage({ car }) {
+	const router = useRouter();
 	return (
 		<div className='car-page'>
 			<div className='animate'>
@@ -49,7 +50,8 @@ export default function CarPage({ car }) {
 			<div className='car-page__body'>
 				<div className='car-info-box'>
 					<h4 className='car-name'>{car.name}</h4>
-					<Link href={'/cars'} className='link-back-to-cars'>
+
+					<Link href={router.asPath} className='link-back-to-cars'>
 						<AiOutlineClose size={20} />
 					</Link>
 				</div>
