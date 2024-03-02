@@ -6,6 +6,7 @@ import { FaRegSnowflake } from 'react-icons/fa';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import Link from 'next/link';
 
+
 export default function CarCard({
 	name,
 	passenger,
