@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import BaseLayout from '@/components/BaseLayout';
 import { useRouter } from 'next/router';
 import getCarsLocation from '@/services/cars/getCarsLocation';
-import CarCard from '@/components/CardCar-CarsPage';
+
 import { FaArrowRight } from 'react-icons/fa';
-import { IoIosInformationCircleOutline } from 'react-icons/io';
-import Link from 'next/link';
+import CardCarOrder from '@/components/CardCar-OrderPage';
 
 export const getServerSideProps = async (context) => {
 	const { query, req } = context;
@@ -18,100 +17,183 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function OrderPage({ offers }: any) {
-	const router = useRouter();
-	
-	const returDate = new Date (router.query.returDate)
-	const pickUpDate = router.query.pickUpDate;
-	const location = router.query.location;
-	const numberDays = returDate - pickUpDate;
-
-	const [path, setPath] = useState<string | null>(null);
 	const offersArray = offers.offers;
-	console.log(offersArray);
+	const router = useRouter();
+
+	const [sortedOffers, setSortedOffers] = useState(offersArray);
+	const [sortType, setSortType] = useState<string>('allVehicles');
+	const [sortBy, setSortBy] = useState();
+	const [path, setPath] = useState<string | null>(null);
+
+	const sortTypeCar = (offers, sortType) => {
+		setSortType(sortType);
+		const sortedOffers = offers.filter((offer) => {
+			return offer.type[0] === sortType;
+		});
+		return sortedOffers;
+	};
+
+	const sortPrice = (offers, sortBy) => {
+		if (sortBy === 'Price Hight to Low') {
+			return [...offers].sort((a, b) => a.price - b.price);
+		} else if (sortBy === 'Price Low to Hight') {
+			return [...offers].sort((a, b) => b.price - a.price);
+		} else {
+			return offers;
+		}
+	};
+	const handleSortPriceChange = (e) => {
+		const newSortBy = e.target.value;
+		setSortBy(newSortBy);
+		const sortByPrice = sortPrice(sortedOffers, sortBy);
+		setSortedOffers(sortByPrice);
+	};
+
 	useEffect(() => {
 		switch (router.pathname) {
 			case '/order': {
 				setPath('vehicle');
+				break;
 			}
 			case '/insurance': {
 				setPath('insurence');
+				break;
 			}
 			case '/equipment': {
 				setPath('equipment');
+				break;
 			}
 			case '/summary': {
 				setPath('summary');
+				break;
 			}
 		}
 	}, []);
+
+	function Filters() {
+		return (
+			<div className='filters-component'>
+				<div className='filters'>
+					<div
+						className={`filter ${sortType === 'allVehicles' ? 'active' : ''}`}
+						onClick={() => {
+							setSortedOffers(offersArray);
+							setSortType('allVehicles');
+						}}
+					>
+						<p className='name'>All Vehicles</p>
+					</div>
+					<div
+						className={`filter ${sortType === 'mini' ? 'active' : ''}`}
+						onClick={() => {
+							setSortedOffers(sortTypeCar(offersArray, 'mini'));
+						}}
+					>
+						<p className='name'>Mini</p>
+					</div>
+					<div
+						className={`filter ${sortType === 'compact' ? 'active' : ''}`}
+						onClick={() => {
+							setSortedOffers(sortTypeCar(offersArray, 'compact'));
+						}}
+					>
+						<p className='name'>Compact</p>
+					</div>
+					<div
+						className={`filter ${sortType === 'van' ? 'active' : ''}`}
+						onClick={() => {
+							setSortedOffers(sortTypeCar(offersArray, 'van'));
+						}}
+					>
+						<p className='name'>Van</p>
+					</div>
+					<div
+						className={`filter ${sortType === 'suv' ? 'active' : ''}`}
+						onClick={() => {
+							setSortedOffers(sortTypeCar(offersArray, 'suv'));
+						}}
+					>
+						<p className='name'>Suv</p>
+					</div>
+					<div
+						className={`filter ${sortType === 'estate' ? 'active' : ''}`}
+						onClick={() => {
+							setSortedOffers(sortTypeCar(offersArray, 'estate'));
+						}}
+					>
+						<p className='name'>Estate</p>
+					</div>
+					<div
+						className={`filter ${sortType === 'special' ? 'active' : ''}`}
+						onClick={() => {
+							setSortedOffers(sortTypeCar(offersArray, 'special'));
+						}}
+					>
+						<p className='name'>Special</p>
+					</div>
+				</div>
+				<div className='sort-btn'>
+					<select
+						name='sort-car'
+						onChange={handleSortPriceChange}
+						value={sortBy}
+					>
+						<option value=''>Sort</option>
+						<option value='Price Low to Hight'>Price Low-to-High</option>
+						<option value='Price Hight to Low'>Price High-to-Low</option>
+					</select>
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<BaseLayout>
 			<section className='order-page'>
 				<div className='pagination-component'>
 					<div className='item'>
-						<h3 className={`item__title ${path === 'vehicle' ? 'active' : ''}`}>
-							Reservation
+						<h3 className={`item__title ${path === 'order' ? 'active' : ''}`}>
+							<span>1</span>Reservation
 						</h3>
 					</div>
-					<FaArrowRight size={25} />
+					<FaArrowRight size={25} className='arrow' />
 					<div className='item'>
-						<h3 className='item__title'>Vehicle</h3>
+						<h3 className={`item__title ${path === 'vehicle' ? 'active' : ''}`}>
+							<span>2</span> Vehicle
+						</h3>
 					</div>
-					<FaArrowRight size={25} />
+					<FaArrowRight size={25} className='arrow' />
 					<div className='item'>
-						<h3 className='item__title'>Insurance</h3>
+						<h3
+							className={`item__title ${path === 'insurance' ? 'active' : ''}`}
+						>
+							<span>3</span>Insurance
+						</h3>
 					</div>
-					<FaArrowRight size={25} />
+					<FaArrowRight size={25} className='arrow' />
 					<div className='item'>
-						<h3 className='item__title'>Equipment</h3>
+						<h3
+							className={`item__title ${path === 'equipment' ? 'active' : ''}`}
+						>
+							<span>4</span> Equipment
+						</h3>
 					</div>
-					<FaArrowRight size={25} />
+					<FaArrowRight size={25} className='arrow' />
 					<div className='item'>
-						<h3 className='item__title'>Summary</h3>
+						<h3 className={`item__title ${path === 'summary' ? 'active' : ''}`}>
+							<span>5</span> Summary
+						</h3>
 					</div>
 				</div>
-
-				{/* {offersArray.map((offer) => {
-					console.log(offer.name[0]);
-
-					return <p>{offer.name[0]}</p>;
-				})} */}
+				<Filters />
 				<div className='cars__container'>
-					{offersArray.map((offer) => (
-						<div className='car-card-order-page'>
-							<div className='box-informations'>
-								<div className='name-box'>
-									<h4 className='title'>{offer.name[0]}</h4>
-									<p className='type'>{offer.type[0]}</p>
-								</div>
-								<div className='btn-box'>
-									<IoIosInformationCircleOutline size={20} className='icon' />
-									<Link href={`cars/${offer.idCar[0]}`} className='link'>
-										More informations
-									</Link>
-								</div>
-							</div>
-							<img src={offer.img[0]} alt='' />
-
-							<div className='amount-info-box'>
-								<div className='color-box'>
-									<p>Day Amount</p>
-								</div>
-								<h4>{offer.price[0]} $ / Day</h4>
-							</div>
-							<hr />
-							<div className='amount-info-box'>
-								<div className='color-box'>
-									<p>Sum Amount</p>
-								</div>
-								<h4>200 $ / Sum</h4>
-							</div>
-							<button className='btn-go-on'>
-								Go on <FaArrowRight className='arrow' size={20} />
-							</button>
-						</div>
-					))}
+					{sortedOffers.length === 0 ? (
+						<p>No matching cars found.</p>
+					) : (
+						sortedOffers.map((offer) => (
+							<CardCarOrder offer={offer} key={offer.id} />
+						))
+					)}
 				</div>
 			</section>
 		</BaseLayout>

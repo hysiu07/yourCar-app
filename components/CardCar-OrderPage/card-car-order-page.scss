@@ -1,0 +1,85 @@
+@import '../../styles/variabels';
+.car-card-order-page {
+	padding: 20px;
+	width: 400px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	border-radius: 10px;
+	// margin-right: 50px;
+	margin-bottom: 30px;
+	.box-informations {
+		display: flex;
+		justify-content: space-between;
+
+		.name-box {
+			.title {
+				padding: 0;
+			}
+		}
+		.btn-box {
+			display: flex;
+			justify-content: center;
+			.link {
+				margin-left: 5px;
+				font-size: 1.6rem;
+				text-decoration: none;
+				color: $main-color;
+				font-family: 'Roboto Condensed', sans-serif;
+			}
+			.icon {
+				color: $main-color;
+			}
+		}
+	}
+	img {
+		width: 100%;
+
+		margin-bottom: 20px;
+	}
+	hr {
+		margin: 10px 0;
+	}
+	.amount-info-box {
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		.color-box {
+			padding: 5px;
+			margin: 0 auto;
+			width: 150px;
+			background-color: gray;
+			border-radius: 5px;
+			p {
+				font-weight: bold;
+				text-align: center;
+				color: white;
+			}
+		}
+		h4 {
+			font-size: 2.5rem;
+			align-self: center;
+		}
+	}
+	.btn-go-on {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 80%;
+		padding: 10px 20px;
+		margin: 0 auto;
+		font-size: 2rem;
+		font-weight: bold;
+		border: none;
+		border-radius: 10px;
+		background-color: $main-color;
+		color: white;
+		cursor: pointer;
+		.arrow {
+			position: relative;
+			margin-left: 10px;
+			transition: 3s;
+		}
+	}
+	.btn-go-on:hover .arrow {
+		left: 40px;
+	}
+}
