@@ -1,0 +1,30 @@
+@import '../../styles/variabels';
+.reservation-component {
+	position: fixed;
+	z-index: 3000;
+	left: -30%;
+	top: 0;
+	width: 30%;
+	height: 100vh;
+	background-color: $main-color;
+	border-radius: 0 10px 10px 0;
+	transition: 0.5s;
+	&__btn-show-panel {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		right: -60px;
+		bottom: 100px;
+		width: 60px;
+		height: 60px;
+		background-color: $main-color;
+		border-radius: 0 10px 10px 0;
+		cursor: pointer;
+
+		.arrow {
+			color: white;
+			transition: 0.5s;
+		}
+	}
+}

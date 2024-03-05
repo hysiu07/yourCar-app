@@ -1,37 +1,17 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
-import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
+import { daysNumber } from '@/services/functions/daysNumber';
+import Link from 'next/link';
+
 export default function CardCarOrder({ offer }) {
 	const router = useRouter();
 
-	const returnDateQuery = router.query.returDate;
-	let returnDate: Date | null = null;
-	if (returnDateQuery) {
-		if (Array.isArray(returnDateQuery)) {
-			returnDate = new Date(returnDateQuery[0]);
-		} else {
-			returnDate = new Date(returnDateQuery);
-		}
-	}
-
-	const pickUpDateQuery = router.query.pickUpDate;
-	let pickUpDate: Date | null = null;
-	if (pickUpDateQuery) {
-		if (Array.isArray(pickUpDateQuery)) {
-			pickUpDate = new Date(pickUpDateQuery[0]);
-		} else {
-			pickUpDate = new Date(pickUpDateQuery);
-		}
-	}
-
-	const differenceInDays =
-		returnDate && pickUpDate
-			? Math.floor(
-					(returnDate.getTime() - pickUpDate.getTime()) / (1000 * 3600 * 24)
-			  )
-			: null;
+	const differenceInDays = daysNumber(
+		router.query.returDate,
+		router.query.pickUpDate
+	);
 
 	return (
 		<div className='car-card-order-page'>

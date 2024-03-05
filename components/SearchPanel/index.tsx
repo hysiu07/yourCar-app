@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 interface Payload {
@@ -58,9 +59,10 @@ export default function SearchPanel() {
 						Select your location
 						<option value='krakow'>Krakow</option>
 						<option value='warsaw'>Warsaw</option>
-						<option value='pozan'>Poznan</option>
+						<option value='poznan'>Poznan</option>
 						<option value='gdansk'>Gdansk</option>
 						<option value='wroclaw'>Wroclaw</option>
+						<option value='szczecin'>Szczecin</option>
 					</select>
 				</div>
 				<div className='form-item'>
