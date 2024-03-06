@@ -44,9 +44,12 @@ export default function CardCarOrder({ offer }) {
 					{differenceInDays ? differenceInDays * offer.price[0] : null}$ / Sum
 				</h4>
 			</div>
-			<button className='btn-go-on'>
+			{/* <button className='btn-go-on'>
 				Go on <FaArrowRight className='arrow' size={20} />
-			</button>
+			</button> */}
+			<Link href='/order/insurance' className='btn-go-on'>
+				Go on <FaArrowRight className='arrow' size={20} />
+			</Link>
 		</div>
 	);
 }
