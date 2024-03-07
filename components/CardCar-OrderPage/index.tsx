@@ -3,11 +3,15 @@ import { useRouter } from 'next/router';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
 import { FaArrowRight } from 'react-icons/fa';
 import { daysNumber } from '@/services/functions/daysNumber';
+import { addCar } from '../../redux/reservationinfo';
+
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 
 export default function CardCarOrder({ offer }) {
+	console.log(offer);
 	const router = useRouter();
-
+	const dispatch = useDispatch();
 	const differenceInDays = daysNumber(
 		router.query.returDate,
 		router.query.pickUpDate
@@ -47,8 +51,16 @@ export default function CardCarOrder({ offer }) {
 			{/* <button className='btn-go-on'>
 				Go on <FaArrowRight className='arrow' size={20} />
 			</button> */}
-			<Link href='/order/insurance' className='btn-go-on'>
-				Go on <FaArrowRight className='arrow' size={20} />
+			<Link
+				href='/order/insurance'
+				className='btn-go-on'
+				onClick={() => {
+					console.log(offer.id);
+					dispatch(addCar(offer.idCar[0], offer.id));
+				}}
+			>
+				Go on
+				<FaArrowRight className='arrow' size={20} />
 			</Link>
 		</div>
 	);

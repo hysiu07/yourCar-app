@@ -1,6 +1,6 @@
 const ADD_CITY_AND_DATE = 'reservation/ADD_CITY_AND_DATE';
 const ADD_VEHICLE = 'reservation/ADD_VEHICLE';
-const ADD_INSURENCE = 'reservation/ADD_INSURANCE';
+const ADD_INSURANCE = 'reservation/ADD_INSURANCE';
 const ADD_EQUIPMENT = 'reservation/ADD_EQUIPMENT';
 
 type InitialStateType = {
@@ -9,8 +9,9 @@ type InitialStateType = {
 	returDate: string | null;
 	numberDays: number | null;
 	carId: number | null;
-	orderId: number | null;
+	offerId: number | null;
 	insuranceType: string | null;
+	insurancePrice: number | null;
 	equipment: string[] | null;
 	priceCar: number | null;
 	priceSum: number | null;
@@ -23,17 +24,26 @@ const INITIAL_STATE_RESERVATION: InitialStateType = {
 	returDate: null,
 	numberDays: null,
 	carId: null,
-	orderId: null,
+	offerId: null,
 	insuranceType: null,
+	insurancePrice: null,
 	equipment: null,
 	priceCar: null,
 	priceSum: null,
 	priceEquipment: null,
 };
 
-export const addCarAndDate = (city, pickUpDate, returDate,numberDays) => ({
+export const addCityandDate = (city, pickUpDate, returDate, numberDays) => ({
 	type: ADD_CITY_AND_DATE,
 	payload: { city, pickUpDate, returDate, numberDays },
+});
+export const addCar = (car, offerId) => ({
+	type: ADD_VEHICLE,
+	payload: { car, offerId },
+});
+export const addInsurance = (insurance, insurancePrice) => ({
+	type: ADD_INSURANCE,
+	payload: { insurance, insurancePrice },
 });
 
 export const reducerReservationInfo = (
@@ -49,6 +59,20 @@ export const reducerReservationInfo = (
 				pickUpDate: pickUpDate,
 				returDate: returDate,
 				numberDays: numberDays,
+			};
+		case ADD_VEHICLE:
+			const { car, offerId } = action.payload;
+			return {
+				...state,
+				carId: car,
+				offerId: offerId,
+			};
+		case ADD_INSURANCE:
+			const { insurance, insurancePrice } = action.payload;
+			return {
+				...state,
+				insuranceType: insurance,
+				insurancePrice: insurancePrice 
 			};
 		default:
 			return state;

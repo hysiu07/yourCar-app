@@ -7,7 +7,7 @@ import { daysNumber } from '@/services/functions/daysNumber';
 import CardCarOrder from '@/components/CardCar-OrderPage';
 
 import { useDispatch } from 'react-redux';
-import { addCarAndDate } from '@/redux/reservationinfo';
+import { addCityandDate } from '@/redux/reservationinfo';
 import dynamic from 'next/dynamic';
 import Filters from '@/components/Filters';
 import PaginationComponent from '@/components/Pagination-component';
@@ -42,7 +42,7 @@ export default function OrderPage({ offers }: any) {
 			router.query.pickUpDate
 		);
 		dispatch(
-			addCarAndDate(
+			addCityandDate(
 				router.query.location,
 				router.query.pickUpDate,
 				router.query.returDate,
