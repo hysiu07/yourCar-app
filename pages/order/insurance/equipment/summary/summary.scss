@@ -1,0 +1,14 @@
+.summary-page {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 5vh 50px 50px 50px;
+	width: 100vw;
+	height: 70vh;
+	&___login-container {
+		width: 70%;
+	}
+	&__summary-view-container {
+		width: 30%;
+	}
+}

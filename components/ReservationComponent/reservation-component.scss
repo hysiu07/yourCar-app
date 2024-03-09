@@ -4,11 +4,44 @@
 	z-index: 3000;
 	left: -30%;
 	top: 0;
+	padding: 20px;
 	width: 30%;
 	height: 100vh;
-	background-color: $main-color;
+	// background-color: $main-color;
+	background: white;
+	// border: 2px solid $main-color;
 	border-radius: 0 10px 10px 0;
 	transition: 0.5s;
+	&__content {
+		h3 {
+			color: white;
+		}
+		.btn {
+			padding: 5px 10px;
+			margin-bottom: 10px;
+		}
+
+		.location-and-date,
+		.car {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			.box {
+				display: flex;
+				margin: 5px 0;
+
+				align-items: center;
+
+				p {
+					color: $main-color;
+				}
+				.icon {
+					margin-right: 5px;
+					color: white;
+				}
+			}
+		}
+	}
 	&__btn-show-panel {
 		display: flex;
 		justify-content: center;

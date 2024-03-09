@@ -12,12 +12,12 @@ import dynamic from 'next/dynamic';
 import Filters from '@/components/Filters';
 import PaginationComponent from '@/components/Pagination-component';
 
-const ReservationComponent = dynamic(
-	() => import('@/components/ReservationComponent'),
-	{
-		ssr: false, // Wyłączanie renderowania po stronie serwera
-	}
-);
+// const ReservationComponent = dynamic(
+// 	() => import('@/components/ReservationComponent'),
+// 	{
+// 		ssr: false, // Wyłączanie renderowania po stronie serwera
+// 	}
+// );
 
 export const getServerSideProps = async (context) => {
 	const { query } = context;
@@ -70,7 +70,7 @@ export default function OrderPage({ offers }: any) {
 					)}
 				</div>
 			</section>
-			<ReservationComponent />
+	
 		</BaseLayout>
 	);
 }

@@ -18,7 +18,7 @@ export default function PaginationComponent() {
 				break;
 			}
 			case '/order/insurance/equipment': {
-				setPath('/order/insurence/equipment');
+				setPath('/order/insurance/equipment');
 				break;
 			}
 			case '/order/insurance/equipment/summary': {

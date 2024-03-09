@@ -9,7 +9,6 @@ import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 
 export default function CardCarOrder({ offer }) {
-	console.log(offer);
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const differenceInDays = daysNumber(
@@ -56,7 +55,7 @@ export default function CardCarOrder({ offer }) {
 				className='btn-go-on'
 				onClick={() => {
 					console.log(offer.id);
-					dispatch(addCar(offer.idCar[0], offer.id));
+					dispatch(addCar(offer.idCar[0], offer.id, Number(offer.price[0])));
 				}}
 			>
 				Go on
