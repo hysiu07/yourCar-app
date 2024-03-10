@@ -1,0 +1,44 @@
+.reservation-component-content {
+    	h5 {
+		font-size: 2rem;
+		margin-bottom: 10px;
+	}
+		h3 {
+			color: black;
+		}
+		.btn {
+			padding: 5px 10px;
+			margin-bottom: 10px;
+		}
+
+		.location-and-date {
+			display: flex;
+
+			justify-content: space-around;
+			.box {
+				display: flex;
+				flex-direction: column;
+				margin: 5px 0;
+
+				align-items: center;
+
+				p {
+					color: $gray-color;
+				}
+				.icon {
+					margin-bottom: 10px;
+					color: black;
+				}
+			}
+		}
+		.car {
+			img {
+				width: 250px;
+			}
+			.car-info-box {
+				h4 {
+					padding: 0;
+				}
+			}
+		}
+	}

@@ -1,8 +1,11 @@
 import BaseLayout from '@/components/BaseLayout';
 import LoginComponent from '@/components/LoginComponent';
+import ReservationComponent from '@/components/ReservationComponent';
+import ReservationComponentContent from '@/components/ReservationComponent/ReservationComponentContent';
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default function SummaryPage() {
+ function SummaryPage({reservation}) {
 	return (
 		<BaseLayout>
 			<div className='summary-page'>
@@ -10,9 +13,15 @@ export default function SummaryPage() {
 					<LoginComponent />
 				</div>
 				<div className='summary-page__summary-view-container'>
-					<h3>Your Reservations:</h3>
+				<ReservationComponentContent reservation={reservation} />
 				</div>
 			</div>
 		</BaseLayout>
 	);
 }
+const mapStateToProps = (state: any) => {
+	return {
+		reservation: state.reservationInfo,
+	};
+};
+export default connect(mapStateToProps)(SummaryPage);

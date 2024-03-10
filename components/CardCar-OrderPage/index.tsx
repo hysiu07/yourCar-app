@@ -55,7 +55,16 @@ export default function CardCarOrder({ offer }) {
 				className='btn-go-on'
 				onClick={() => {
 					console.log(offer.id);
-					dispatch(addCar(offer.idCar[0], offer.id, Number(offer.price[0])));
+					dispatch(
+						addCar(
+							offer.idCar[0],
+							offer.id,
+							Number(offer.price[0]),
+							offer.name[0],
+							offer.type[0],
+							offer.img[0]
+						)
+					);
 				}}
 			>
 				Go on

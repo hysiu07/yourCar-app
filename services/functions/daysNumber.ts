@@ -24,7 +24,7 @@ export const daysNumber = (returnDate, pickUpDate) => {
 			? Math.floor(
 					(returnDate.getTime() - pickUpDate.getTime()) / (1000 * 3600 * 24)
 			  )
-            : null;
-    
+			: null;
+
 	return differenceInDays;
 };

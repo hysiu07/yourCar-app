@@ -1,7 +1,7 @@
 import airDb from '../airtableClient';
 
 type idType = {
-	id: number | string;
+	id: number ;
 };
 
 const getCar = async (id: idType) => {

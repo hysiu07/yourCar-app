@@ -11,6 +11,7 @@ import { FaChild } from 'react-icons/fa';
 
 import { useDispatch } from 'react-redux';
 import { addEquipment } from '@/redux/reservationinfo';
+
 export function Additive({
 	title,
 	description,
@@ -19,6 +20,7 @@ export function Additive({
 	equipment,
 	setEquipment,
 }) {
+	console.log(equipment);
 	const [active, setActive] = useState<boolean>(false);
 	return (
 		<div className={`additive ${active && 'active-additive'}`}>
@@ -34,11 +36,11 @@ export function Additive({
 			<button
 				className='btn-add'
 				onClick={() => {
-					if (!equipment.includes(title)) {
-						setEquipment([...equipment, title]);
+					if (!equipment.find((item) => item.title === title)) {
+						setEquipment([...equipment, { title, price }]);
 						setActive(true);
 					} else {
-						setEquipment(equipment.filter((item) => item !== title));
+						setEquipment(equipment.filter((item) => item.title !== title));
 						setActive(false);
 					}
 				}}
@@ -50,13 +52,14 @@ export function Additive({
 }
 
 export default function EquipmentPage() {
-	const [equipment, setEquipment] = useState<string[]>([]);
+	const [equipments, setEquipments] = useState<[]>([]);
 	const dispatch = useDispatch();
+	console.log(equipments);
 	return (
 		<BaseLayout>
 			<div className='equipment-page'>
 				<PaginationComponent />
-			
+
 				<div className='equipment-page__container'>
 					<Additive
 						title='Extra Driver'
@@ -65,54 +68,54 @@ export default function EquipmentPage() {
 					reservation, leaving nothing to chance.'
 						price={20}
 						icon={<TbUsers size={70} className='icon' />}
-						equipment={equipment}
-						setEquipment={setEquipment}
+						equipment={equipments}
+						setEquipment={setEquipments}
 					/>
 					<Additive
 						title='Satellite Navigation GPS'
 						description='If you want to arrive on time at your chosen destination and make the most of your time, you can rent our navigation system to provide you with a high-quality guide for your vacation. You can check where the nearest gas stations and restaurants are, avoid potential traffic jams, and relax during your journey.'
 						price={30}
 						icon={<MdAssistantNavigation size={70} className='icon' />}
-						equipment={equipment}
-						setEquipment={setEquipment}
+						equipment={equipments}
+						setEquipment={setEquipments}
 					/>
 					<Additive
 						title='Child Seat (0-9 kg)'
 						description='For infants from birth to 13 kg, this belongs to the group of car seats 0+.'
 						price={25}
 						icon={<FaChild size={70} className='icon' />}
-						equipment={equipment}
-						setEquipment={setEquipment}
+						equipment={equipments}
+						setEquipment={setEquipments}
 					/>
 					<Additive
 						title='Child Seat (9-18 kg)'
 						description='Car seat for children from birth to 18 kg, belonging to the groups of car seats 0+ and 1.'
 						price={25}
 						icon={<FaChild size={70} className='icon' />}
-						equipment={equipment}
-						setEquipment={setEquipment}
+						equipment={equipments}
+						setEquipment={setEquipments}
 					/>
 					<Additive
 						title='Child Seat (18-36 kg)'
 						description='Booster seat for children aged 4 to 12, belonging to the groups of car seats 2 and 3.'
 						price={25}
 						icon={<FaChild size={70} className='icon' />}
-						equipment={equipment}
-						setEquipment={setEquipment}
+						equipment={equipments}
+						setEquipment={setEquipments}
 					/>
 					<Additive
 						title='Senior Driver'
 						description='If you are over 71 years old, please choose this option during the reservation.'
 						price={25}
 						icon={<TbUsers size={70} className='icon' />}
-						equipment={equipment}
-						setEquipment={setEquipment}
+						equipment={equipments}
+						setEquipment={setEquipments}
 					/>
 				</div>
 				<Link
 					href='/order/insurance/equipment/summary'
 					onClick={() => {
-						dispatch(addEquipment(equipment));
+						dispatch(addEquipment(equipments));
 					}}
 				>
 					Go on!
