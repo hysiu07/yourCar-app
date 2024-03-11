@@ -1,44 +1,69 @@
 .reservation-component-content {
-    	h5 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	h5 {
 		font-size: 2rem;
 		margin-bottom: 10px;
 	}
-		h3 {
-			color: black;
-		}
-		.btn {
-			padding: 5px 10px;
-			margin-bottom: 10px;
-		}
+	h3 {
+		color: $main-color;
+		margin-bottom: 20px;
+	}
+	p {
+		font-size: 1.8rem;
+	}
+	h4.sum {
+		font-size: 2.5rem;
+	}
+	.btn-cancel-reservation {
+		padding: 5px 10px;
+		margin-bottom: 10px;
+		background-color: white;
+		color: $main-color;
+		border-radius: 10px;
+		border: 1px solid $main-color;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+	.btn-cancel-reservation:hover {
+		color: red;
+		border: 1px solid red;
+	}
 
-		.location-and-date {
+	.location-and-date {
+		display: flex;
+
+		justify-content: space-around;
+		.box {
 			display: flex;
+			flex-direction: column;
+			margin: 5px 0;
 
-			justify-content: space-around;
-			.box {
-				display: flex;
-				flex-direction: column;
-				margin: 5px 0;
+			align-items: center;
 
-				align-items: center;
-
-				p {
-					color: $gray-color;
-				}
-				.icon {
-					margin-bottom: 10px;
-					color: black;
-				}
+			p {
+				color: $gray-color;
 			}
-		}
-		.car {
-			img {
-				width: 250px;
-			}
-			.car-info-box {
-				h4 {
-					padding: 0;
-				}
+			.icon {
+				margin-bottom: 10px;
+				color: black;
 			}
 		}
 	}
+	.car {
+		width: 100%;
+		img {
+			display: block;
+			margin: 0 auto;
+			width: 300px;
+			margin-bottom: 40px;
+		}
+		.car-info-box {
+			h4 {
+				padding: 0;
+			}
+		}
+	}
+}

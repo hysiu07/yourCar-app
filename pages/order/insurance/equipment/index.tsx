@@ -43,6 +43,7 @@ export function Additive({
 						setEquipment(equipment.filter((item) => item.title !== title));
 						setActive(false);
 					}
+					console.log(equipment);
 				}}
 			>
 				ADD
@@ -114,6 +115,7 @@ export default function EquipmentPage() {
 				</div>
 				<Link
 					href='/order/insurance/equipment/summary'
+					className='btn-continue'
 					onClick={() => {
 						dispatch(addEquipment(equipments));
 					}}

@@ -1,20 +1,36 @@
 @import '../../../styles/variabels';
 .insurance-container {
-	padding: 5vh 50px 50px 50px ;
+	display: flex;
+	flex-direction: column;
+	padding: 5vh 50px 50px 50px;
 	width: 100vw;
-	// max-width: 1600px;
+
 	h3 {
 		text-align: center;
+	}
+	.btn-continue {
+		align-self: flex-end;
+		// margin: 50px auto;
+		text-align: center;
+		padding: 10px 20px;
+		width: 150px;
+		font-size: 2.5rem;
+		text-decoration: none;
+		font-family: 'Roboto Condensed', sans-serif;
+		border: 1px solid $main-color;
+		border-radius: 10px;
+		color: $main-color;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+	.btn-continue:hover {
+		color: white;
+		background-color: $main-color;
 	}
 	.insurance-packages {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		// display: flex;
-		// justify-content: space-evenly;
-		// align-items: center;
-		// flex-wrap: wrap;
-		// width: 100%;
 
 		table {
 			th {
@@ -55,19 +71,16 @@
 				}
 				.btn-choose {
 					cursor: pointer;
-                    font-weight: bold;
+					font-weight: bold;
 					border: 1px solid $gray-color;
 					background-color: white;
 					color: $gray-color;
 				}
 				.selected-insurance-btn {
 					color: white;
-                    background-color: $main-color;
-                    border: 1px solid $main-color;
+					background-color: $main-color;
+					border: 1px solid $main-color;
 				}
-                // .selected-insurance-column{
-                //    border-bottom: 1px solid $main-color;
-                // }
 			}
 		}
 	}
@@ -75,7 +88,7 @@
 	.insurance-card {
 		display: flex;
 		flex-direction: column;
-		// justify-content: space-evenly;
+
 		align-items: center;
 		padding: 20px;
 		margin-bottom: 50px;

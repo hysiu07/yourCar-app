@@ -2,7 +2,6 @@ import BaseLayout from '@/components/BaseLayout';
 import PaginationComponent from '@/components/Pagination-component';
 import React, { useState } from 'react';
 
-import store from '@/redux/store';
 import { IoShieldOutline } from 'react-icons/io5';
 import { IoShieldHalfSharp } from 'react-icons/io5';
 import { IoShieldSharp } from 'react-icons/io5';
@@ -14,7 +13,7 @@ import Link from 'next/link';
 export default function InsuracnePage() {
 	const [insuracne, setInsurance] = useState('');
 	const dispatch = useDispatch();
-	console.log(store.getState());
+
 	return (
 		<BaseLayout>
 			<div className='insurance-container'>
@@ -164,7 +163,9 @@ export default function InsuracnePage() {
 					</table>
 				</div>
 				{insuracne !== '' && (
-					<Link href={'/order/insurance/equipment'}>Go on!</Link>
+					<Link href={'/order/insurance/equipment'} className='btn-continue'>
+						Go on!
+					</Link>
 				)}
 			</div>
 		</BaseLayout>

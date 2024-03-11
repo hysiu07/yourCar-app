@@ -7,9 +7,6 @@
 	padding: 20px;
 	width: 30%;
 	height: 100vh;
-	// background-color: $main-color;
-	// background: $main-color;
-	// border: 2px solid $main-color;
 	background-color: white;
 	border-radius: 0 10px 10px 0;
 	transition: 0.5s;
@@ -32,5 +29,21 @@
 			color: white;
 			transition: 0.5s;
 		}
+	}
+}
+
+@media(max-width: 992px){
+	.reservation-component{
+		width: 50%;
+	}
+}
+@media(max-width: 768px){
+	.reservation-component{
+		width: 50%;
+	}
+}
+@media(max-width: 576px){
+	.reservation-component{
+		width: 100%;
 	}
 }

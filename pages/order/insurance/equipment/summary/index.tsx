@@ -1,19 +1,16 @@
 import BaseLayout from '@/components/BaseLayout';
-import LoginComponent from '@/components/LoginComponent';
-import ReservationComponent from '@/components/ReservationComponent';
+import PaginationComponent from '@/components/Pagination-component';
 import ReservationComponentContent from '@/components/ReservationComponent/ReservationComponentContent';
 import React from 'react';
 import { connect } from 'react-redux';
 
- function SummaryPage({reservation}) {
+function SummaryPage({ reservation }) {
 	return (
 		<BaseLayout>
 			<div className='summary-page'>
-				<div className='summary-page__login-container'>
-					<LoginComponent />
-				</div>
+			<PaginationComponent />
 				<div className='summary-page__summary-view-container'>
-				<ReservationComponentContent reservation={reservation} />
+					<ReservationComponentContent reservation={reservation} />
 				</div>
 			</div>
 		</BaseLayout>

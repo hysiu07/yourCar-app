@@ -22,7 +22,7 @@ export default function PaginationComponent() {
 				break;
 			}
 			case '/order/insurance/equipment/summary': {
-				setPath('/order/insurence/equipment/summary');
+				setPath('/order/insurance/equipment/summary');
 				break;
 			}
 		}

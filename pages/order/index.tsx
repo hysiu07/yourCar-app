@@ -70,7 +70,6 @@ export default function OrderPage({ offers }: any) {
 					)}
 				</div>
 			</section>
-	
 		</BaseLayout>
 	);
 }
