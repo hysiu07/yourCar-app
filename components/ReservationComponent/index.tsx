@@ -7,18 +7,27 @@ import { useRouter } from 'next/router';
 import { FaArrowRight } from 'react-icons/fa';
 
 import ReservationComponentContent from './ReservationComponentContent';
+import Link from 'next/link';
 
 function ReservationComponent({ reservation }) {
 	const [showReservationPanel, setShowReservationPanel] = useState(false);
 	const router = useRouter();
 	const [showComponent, setShowComponent] = useState(true);
-	console.log(reservation);
 
 	useEffect(() => {
 		if (router.pathname === '/order/insurance/equipment/summary') {
 			setShowComponent(false);
 		}
 	}, []);
+	const getNextStep = (reservation) => {
+		if (reservation.processing && !reservation.insuranceType) {
+			return '/insurance';
+		} else if (reservation.insuranceType && !reservation.equipments) {
+			return '/insurance/equipment';
+		} else if (reservation.equipments && reservation.insuranceType) {
+			return '/insurance/equipment/summary';
+		}
+	};
 
 	return (
 		reservation.processing &&
@@ -45,6 +54,12 @@ function ReservationComponent({ reservation }) {
 						}
 					/>
 				</div>
+				<Link
+					className='link-continue-reservation'
+					href={`/order/${getNextStep(reservation)}`}
+				>
+					Continue...
+				</Link>
 			</div>
 		)
 	);

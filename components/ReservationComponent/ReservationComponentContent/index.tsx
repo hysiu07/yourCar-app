@@ -4,9 +4,10 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { FaCalendar } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { reset } from '@/redux/reservationinfo';
+import { useRouter } from 'next/router';
 export default function ReservationComponentContent({ reservation }) {
 	const dispatch = useDispatch();
-	
+	const router = useRouter();
 	return reservation.processing ? (
 		<div className='reservation-component-content'>
 			<h3>Your Reservation</h3>
@@ -14,6 +15,7 @@ export default function ReservationComponentContent({ reservation }) {
 				className='btn-cancel-reservation'
 				onClick={() => {
 					dispatch(reset());
+					router.push('/');
 				}}
 			>
 				Clean your reservation

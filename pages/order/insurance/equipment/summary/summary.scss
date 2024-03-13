@@ -17,6 +17,36 @@
 		border-radius: 10px;
 		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	}
+	.btn-go-to-payment {
+		margin-top: 20px;
+		padding: 10px 20px;
+		font-family: 'Roboto Condensed', sans-serif;
+		font-size: 2.5rem;
+		border: 1px solid $main-color;
+		border-radius: 10px;
+		color: $main-color;
+		background-color: white;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+	.btn-go-to-payment:hover {
+		color: white;
+		background-color: $main-color;
+	}
+	.disabled-btn {
+		color: gray;
+		border: 1px solid gray;
+	}
+	.disabled-btn:hover {
+		color: gray;
+
+		background-color: white;
+	}
+	.info-container {
+		p {
+			margin-top: 20px;
+		}
+	}
 }
 @media (max-width: 992px) {
 	.summary-page {

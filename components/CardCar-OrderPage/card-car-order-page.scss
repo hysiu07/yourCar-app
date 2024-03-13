@@ -1,11 +1,26 @@
 @import '../../styles/variabels';
 .car-card-order-page {
+	position: relative;
 	padding: 20px;
 	width: 400px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	border-radius: 10px;
-
 	margin-bottom: 30px;
+	.shadow-available {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		z-index: 4000;
+		width: 100%;
+		height: 100%;
+		transform: translate(-20px, -20px);
+		background-color: rgba(0, 0, 0, 0.75);
+		border-radius: 10px;
+		p {
+			font-size: 2rem;
+		}
+	}
 	.box-informations {
 		display: flex;
 		justify-content: space-between;
@@ -30,58 +45,58 @@
 			}
 		}
 	}
-	img {
-		width: 100%;
+}
+img {
+	width: 100%;
 
-		margin-bottom: 20px;
-	}
-	hr {
-		margin: 10px 0;
-	}
-	.amount-info-box {
-		padding: 10px;
-		display: flex;
-		flex-direction: column;
-		.color-box {
-			padding: 5px;
-			margin: 0 auto;
-			width: 150px;
-			background-color: gray;
-			border-radius: 5px;
-			p {
-				font-weight: bold;
-				text-align: center;
-				color: white;
-			}
-		}
-		h4 {
-			font-size: 2.5rem;
-			align-self: center;
-		}
-	}
-	.btn-go-on {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 80%;
-		padding: 10px 20px;
+	margin-bottom: 20px;
+}
+hr {
+	margin: 10px 0;
+}
+.amount-info-box {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	.color-box {
+		padding: 5px;
 		margin: 0 auto;
-		font-size: 2rem;
-		font-weight: bold;
-		border: none;
-		border-radius: 10px;
-		background-color: $main-color;
-		font-family: 'Roboto Condensed', sans-serif;
-		text-decoration: none;
-		color: white;
-		cursor: pointer;
-		.arrow {
-			position: relative;
-			margin-left: 10px;
-			transition: 3s;
+		width: 150px;
+		background-color: gray;
+		border-radius: 5px;
+		p {
+			font-weight: bold;
+			text-align: center;
+			color: white;
 		}
 	}
-	.btn-go-on:hover .arrow {
-		left: 40px;
+	h4 {
+		font-size: 2.5rem;
+		align-self: center;
 	}
+}
+.btn-go-on {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	padding: 10px 20px;
+	margin: 0 auto;
+	font-size: 2rem;
+	font-weight: bold;
+	border: none;
+	border-radius: 10px;
+	background-color: $main-color;
+	font-family: 'Roboto Condensed', sans-serif;
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+	.arrow {
+		position: relative;
+		margin-left: 10px;
+		transition: 3s;
+	}
+}
+.btn-go-on:hover .arrow {
+	left: 40px;
 }

@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 
 export default function CardCarOrder({ offer }) {
+	console.log(offer.status);
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const differenceInDays = daysNumber(
@@ -18,6 +19,11 @@ export default function CardCarOrder({ offer }) {
 
 	return (
 		<div className='car-card-order-page'>
+			{offer.status === 'not available' && (
+				<div className='shadow-available'>
+					<p>Not available</p>
+				</div>
+			)}
 			<div className='box-informations'>
 				<div className='name-box'>
 					<h4 className='title'>{offer.name[0]}</h4>
@@ -47,7 +53,7 @@ export default function CardCarOrder({ offer }) {
 					{differenceInDays ? differenceInDays * offer.price[0] : null}$ / Sum
 				</h4>
 			</div>
-		
+
 			<Link
 				href='/order/insurance'
 				className='btn-go-on'

@@ -11,7 +11,6 @@
 	border-radius: 0 10px 10px 0;
 	transition: 0.5s;
 
-	
 	&__btn-show-panel {
 		display: flex;
 		justify-content: center;
@@ -30,20 +29,26 @@
 			transition: 0.5s;
 		}
 	}
+	.link-continue-reservation {
+		font-size: 2rem;
+		text-decoration: none;
+		font-family: 'Roboto Condensed', sans-serif;
+		color: $main-color;
+	}
 }
 
-@media(max-width: 992px){
-	.reservation-component{
+@media (max-width: 992px) {
+	.reservation-component {
 		width: 50%;
 	}
 }
-@media(max-width: 768px){
-	.reservation-component{
+@media (max-width: 768px) {
+	.reservation-component {
 		width: 50%;
 	}
 }
-@media(max-width: 576px){
-	.reservation-component{
+@media (max-width: 576px) {
+	.reservation-component {
 		width: 100%;
 	}
 }

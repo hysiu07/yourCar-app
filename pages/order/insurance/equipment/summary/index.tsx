@@ -4,14 +4,29 @@ import ReservationComponentContent from '@/components/ReservationComponent/Reser
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { useSession } from 'next-auth/react';
+
 function SummaryPage({ reservation }) {
+	const { data, data: session } = useSession();
 	return (
 		<BaseLayout>
 			<div className='summary-page'>
-			<PaginationComponent />
+				<PaginationComponent />
 				<div className='summary-page__summary-view-container'>
 					<ReservationComponentContent reservation={reservation} />
 				</div>
+				{!session ? (
+					<div className='info-container'>
+						<p>You haveto log in!</p>
+					</div>
+				) : (
+					<button
+						disabled={!session}
+						className={`btn-go-to-payment ${!session ? 'disabled-btn' : ''}`}
+					>
+						Go to payment
+					</button>
+				)}
 			</div>
 		</BaseLayout>
 	);

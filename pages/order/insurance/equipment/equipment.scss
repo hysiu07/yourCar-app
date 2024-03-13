@@ -2,7 +2,7 @@
 .equipment-page {
 	display: flex;
 	flex-direction: column;
-	
+
 	padding: 5vh 50px 50px 50px;
 	width: 100vw;
 
@@ -21,10 +21,12 @@
 		cursor: pointer;
 		transition: 0.3s;
 	}
+	
 	.btn-continue:hover {
 		color: white;
 		background-color: $main-color;
 	}
+	
 	&__container {
 		display: flex;
 		flex-direction: column;
