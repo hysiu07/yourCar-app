@@ -1,21 +1,17 @@
-import React from 'react'
+import React from 'react';
 import { FaRegStar } from 'react-icons/fa';
 
-export default function OpinionCard() {
-  return (
-		<div className='item'>
-			<img src='img/users/charlie.jpg' alt='' />
+export default function OpinionCard({ mark, img, text, author }) {
+	return (
+		<div className='opinion-card'>
+			<img src={img} alt='user-img' />
 
 			<div className='text-content'>
-				<p className='contain-opinion'>
-					"There are many variations of passages a but Nullam vulputate urna,
-					adipiscing vulputate mauris nisl sagittis et. Quisque id semper est
-					nullam enim leo in nec laoreet."
-				</p>
-				<h4 className='name-author'>Charlie Johanson</h4>
+				<p className='contain-opinion'>{text}</p>
+				<h4 className='name-author'>{author}</h4>
 				<span className='rate-star'>
 					<FaRegStar size={30} className='star' />
-					4.6 / 5
+					{mark} / 5
 				</span>
 			</div>
 		</div>

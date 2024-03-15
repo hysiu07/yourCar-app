@@ -10,6 +10,7 @@
 @import '../components/Pagination-component/pagination.scss';
 @import '../components/LoginComponent/logIn-component.scss';
 @import '../components/ReservationComponent/ReservationComponentContent/reservation-component-context.scss';
+@import '../pages/admin/components/AssidePanel.scss';
 
 // mainView
 @import '../components/MainView/Nav/nav.scss';
@@ -32,6 +33,7 @@
 @import '../pages/order/insurance/insurancePage.scss';
 @import '../pages/order/insurance/equipment/equipment.scss';
 @import '../pages/order/insurance/equipment/summary/summary.scss';
+@import '../pages/admin/admin-page.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
