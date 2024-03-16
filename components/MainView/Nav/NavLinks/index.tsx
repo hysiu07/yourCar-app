@@ -15,6 +15,7 @@ export default function NavLinks({
 	showMenuHandler,
 }: NavLinkPropsType) {
 	const { data, data: session } = useSession();
+	
 
 	const router = useRouter();
 	const [showLinks, setShowLinks] = useState<boolean>(true);
@@ -38,21 +39,27 @@ export default function NavLinks({
 
 			<span className='decor-line'></span>
 			{session ? (
-				<Link
-					className='logi-in-link'
-					href='/'
-					onClick={() => {
-						signOut();
-					}}
-				>
-					Sign out
-				</Link>
+				<>
+					<Link
+						className='logi-in-link'
+						href='/'
+						onClick={() => {
+							signOut();
+						}}
+					>
+						Sign out
+					</Link>
+					{session.user?.role === 'admin' && (
+						<Link className='logi-in-link' href='/admin'>
+							Admin
+						</Link>
+					)}
+				</>
 			) : (
 				<Link className='logi-in-link' href='/login'>
 					Login
 				</Link>
 			)}
-
 			<button
 				className='close-btn'
 				onClick={() => {

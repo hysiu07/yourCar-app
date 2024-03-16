@@ -22,11 +22,11 @@ export default NextAuth({
 					email: credentials.email,
 					password: credentials.password,
 				});
-				console.log(user, 'user z auth w nextauth');
+				
 
 				if (user) {
 					// Any object returned will be saved in `user` property of the JWT
-					console.log(user, 'true user');
+			
 					return user;
 				} else {
 					// If you return null then an error will be displayed advising the user to check their details.
