@@ -1,0 +1,25 @@
+.popup-admin {
+	position: absolute;
+	top: 50px;
+    right: 50%;
+	display: inline-block;
+
+	padding: 10px;
+	border-radius: 10px;
+	color: white;
+	background-color: $main-color;
+	div {
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		button {
+			padding: 10px;
+			margin: 5px;
+			border-radius: 10px;
+			border: none;
+            font-size: 1.4rem;
+			color: $main-color;
+			cursor: pointer;
+		}
+	}
+}
