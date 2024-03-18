@@ -1,4 +1,3 @@
-
 import React from 'react';
 type PopUpAdminProps = {
 	text: string;
@@ -19,7 +18,9 @@ export default function PopUpAdmin({
 			<h4>{name}</h4>
 			<div>
 				<button
-					onClick={()=>{handle()}}
+					onClick={() => {
+						handle();
+					}}
 				>
 					Yes
 				</button>

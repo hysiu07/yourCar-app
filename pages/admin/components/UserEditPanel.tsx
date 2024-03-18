@@ -8,7 +8,6 @@ export default function UserEditPanel({
 }) {
 	const userForm = useRef<null | any>(null);
 
-
 	return (
 		<div className='edit-user-component'>
 			<div className='panel'>
@@ -38,7 +37,7 @@ export default function UserEditPanel({
 							type='submit'
 							onClick={(e) => {
 								e.preventDefault();
-								handleUpdateUser(user.airtableId,);
+								handleUpdateUser(user.airtableId, userForm.current);
 							}}
 						>
 							Update

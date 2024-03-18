@@ -3,25 +3,26 @@ import { useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import { FaRegEdit } from 'react-icons/fa';
-import PopUpAdmin from '../components/PopUpAdmin';
-import UserEditPanel from '../components/UserEditPanel';
+import PopUpAdmin from '../../components/PopUpAdmin';
+import UserEditPanel from '../../components/UserEditPanel';
+import { useRouter } from 'next/router';
 
 export default function User({ user }) {
 	const [showPopUp, setShowPopUp] = useState<boolean>(false);
 	const [showEditPanel, setShowEditPanel] = useState<boolean>(false);
-
+	const router = useRouter();
 	const handleDeleteUser = async (payload) => {
-		await fetch('/api/users/delete', {
+		const response = await fetch('/api/users/delete', {
 			method: 'DELETE',
 			body: JSON.stringify(payload),
 			headers: {
 				'Content-Type': 'application/json',
 			},
-		})
-			.then((res) => res.json())
-			.then((data) => console.log(data));
+		});
 
-		// window.location.reload();
+		if (response.ok) {
+			router.push('/admin/users');
+		}
 	};
 
 	const handleUpdateUser = async (airtableId, form) => {
@@ -33,7 +34,7 @@ export default function User({ user }) {
 			role: formUserUpDate.get('role'),
 		};
 
-		await fetch('/api/users/update', {
+		const response = await fetch('/api/users/update', {
 			method: 'POST',
 			body: JSON.stringify({
 				userInfo: payload,
@@ -42,14 +43,13 @@ export default function User({ user }) {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-		})
-			.then((res) => res.json())
-			.then((data) => console.log(data));
+		});
+		if (response.ok) {
+			router.push('/admin/users');
+			setShowEditPanel(false);
+		}
 	};
 
-	// const handleUpdateInfoUser = (e) => {
-	// 	e.preventDefault();
-	// };
 	return (
 		<div className='user' key={user.id}>
 			{showPopUp ? (
@@ -107,7 +107,6 @@ export default function User({ user }) {
 				<button
 					onClick={() => {
 						setShowPopUp(true);
-						// handleDeleteUser(user.airtableId);
 					}}
 				>
 					<IoClose size={20} />
@@ -119,9 +118,6 @@ export default function User({ user }) {
 				>
 					<FaRegEdit size={20} />
 				</button>
-				{/* <button>
-										<IoIosArrowDropdown size={20} />
-									</button> */}
 			</div>
 		</div>
 	);

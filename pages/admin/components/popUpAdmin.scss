@@ -1,7 +1,8 @@
 .popup-admin {
 	position: absolute;
+	z-index: 4000;
 	top: 50px;
-    right: 50%;
+	right: 50%;
 	display: inline-block;
 
 	padding: 10px;
@@ -17,7 +18,7 @@
 			margin: 5px;
 			border-radius: 10px;
 			border: none;
-            font-size: 1.4rem;
+			font-size: 1.4rem;
 			color: $main-color;
 			cursor: pointer;
 		}
