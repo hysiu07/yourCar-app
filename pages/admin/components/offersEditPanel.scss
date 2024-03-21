@@ -1,12 +1,10 @@
-.edit-user-component {
+.edit-offer-component {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
 	width: 100vw;
-
 	.panel {
-		position: relative;
 		top: 100px;
 		padding: 20px;
 		z-index: 5000;
@@ -14,22 +12,11 @@
 		border-radius: 10px;
 		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 		h3 {
-			text-align: center;
+			color: $main-color;
 		}
 		form {
 			display: flex;
 			flex-direction: column;
-			justify-content: start;
-			.buttons-container {
-				display: flex;
-				justify-content: space-evenly;
-				align-items: center;
-				margin-top: 10px;
-				button {
-					padding: 5px 10px;
-					cursor: pointer;
-				}
-			}
 		}
 	}
 }

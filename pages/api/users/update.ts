@@ -6,8 +6,8 @@ export default async (req, res) => {
 			try {
 				const payload = req.body;
 				const infoUser = payload.userInfo;
-                const airtbaleId = payload.userAirtableId;
-                console.log(infoUser);
+				const airtbaleId = payload.userAirtableId;
+
 				const user = await upDate(infoUser, airtbaleId);
 				res.status(200).json({ status: 'UpDated', user });
 			} catch (error: any) {

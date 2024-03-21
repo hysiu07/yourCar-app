@@ -1,5 +1,5 @@
 import React from 'react';
-
+import OfferEditPanel from '../../components/OffersEditPanel';
 import { MdOutlineLocalOffer } from 'react-icons/md';
 import { FaRegUser } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
@@ -8,9 +8,10 @@ import PopUpAdmin from '../../components/PopUpAdmin';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-export default function Offer({ offer }) {
+export default function Offer({ offer, cars }) {
 	const router = useRouter();
 	const [showPopUp, setShowPopUp] = useState<boolean>(false);
+	const [showEditPanel, setShowEditPanel] = useState<boolean>(false);
 
 	const handleDeleteOffer = async (payload) => {
 		const response = await fetch('/api/offers/delete', {
@@ -24,6 +25,34 @@ export default function Offer({ offer }) {
 		if (response.ok) {
 			router.push('/admin/offers');
 		}
+	};
+
+	const handleUpdateOffer = async (airtableId, form) => {
+		const formOfferUpDate = new FormData(form);
+		const payload = {
+			status: formOfferUpDate.get('status'),
+			location: formOfferUpDate.get('location'),
+			// price: formOfferUpDate.get('price'),
+			cars: [Number(formOfferUpDate.get('car'))],
+		};
+		console.log(payload);
+		const response = await fetch('/api/offers/update', {
+			method: 'POST',
+			body: JSON.stringify({
+				offerInfo: payload,
+				offerAirtableId: airtableId,
+			}),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((res) => res.json())
+			.then((dat) => console.log(dat));
+
+		// if (response.ok) {
+		// 	router.push('/admin/users');
+		// 	setShowEditPanel(false);
+		// }
 	};
 	return (
 		<div
@@ -45,7 +74,16 @@ export default function Offer({ offer }) {
 					}}
 				/>
 			)}
-
+			{showEditPanel ? (
+				<OfferEditPanel
+					offer={offer}
+					handleUpdateOffer={handleUpdateOffer}
+					closeEditPanel={setShowEditPanel}
+					cars={cars}
+				/>
+			) : (
+				''
+			)}
 			<div className='offer-info'>
 				<MdOutlineLocalOffer size={20} />
 				<div className='box'>
@@ -82,7 +120,11 @@ export default function Offer({ offer }) {
 				>
 					<IoClose size={20} />
 				</button>
-				<button>
+				<button
+					onClick={() => {
+						setShowEditPanel(true);
+					}}
+				>
 					<FaRegEdit size={20} />
 				</button>
 			</div>
