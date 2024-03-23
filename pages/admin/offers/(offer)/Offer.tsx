@@ -32,10 +32,9 @@ export default function Offer({ offer, cars }) {
 		const payload = {
 			status: formOfferUpDate.get('status'),
 			location: formOfferUpDate.get('location'),
-			// price: formOfferUpDate.get('price'),
-			cars: [Number(formOfferUpDate.get('car'))],
+			cars: [formOfferUpDate.get('car')],
 		};
-		console.log(payload);
+
 		const response = await fetch('/api/offers/update', {
 			method: 'POST',
 			body: JSON.stringify({
@@ -45,14 +44,12 @@ export default function Offer({ offer, cars }) {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-		})
-			.then((res) => res.json())
-			.then((dat) => console.log(dat));
+		});
 
-		// if (response.ok) {
-		// 	router.push('/admin/users');
-		// 	setShowEditPanel(false);
-		// }
+		if (response.ok) {
+			router.push('/admin/offers');
+			setShowEditPanel(false);
+		}
 	};
 	return (
 		<div
@@ -64,6 +61,7 @@ export default function Offer({ offer, cars }) {
 					: { background: 'white' }
 			}
 		>
+			
 			{showPopUp && (
 				<PopUpAdmin
 					text='Do you want delete offer?'

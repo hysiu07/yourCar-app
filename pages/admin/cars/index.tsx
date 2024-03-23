@@ -2,11 +2,15 @@ import React from 'react';
 import { useState } from 'react';
 import AdminPage from '..';
 import getAllCars from '@/services/cars/getAllCars';
-import { FaRegUser } from 'react-icons/fa';
-import { IoClose } from 'react-icons/io5';
-import { FaRegEdit } from 'react-icons/fa';
-
-export function AddCarModal({ hideModal }) {
+import Car from './(car)/Car';
+export function AddCarModal({ hideModal, car }) {
+	const [prevPicture, setPrevPicture] = useState<string>(car.img);
+	
+	const handleImagePreview = (e) => {
+		const url = window.URL.createObjectURL(e.target.files[0]);
+		console.log('url', url);
+		setPrevPicture(url);
+	};
 	return (
 		<div className='add-car-modal'>
 			<div className='panel'>
@@ -18,31 +22,36 @@ export function AddCarModal({ hideModal }) {
 				>
 					X
 				</button>
+				{car && <img src={prevPicture} alt='car-picture' />}
 				<form>
-					<label htmlFor=''>Name Car</label>
-					<input type='text' />
-					<label htmlFor=''>Price</label>
-					<input type='text' />
-					<label htmlFor=''>Gearbox</label>
-					<select name='gearbox' id=''>
+					<label htmlFor='name'>Name Car</label>
+					<input type='text' defaultValue={car ? car.name : ''} name='name' />
+					<label htmlFor='price'>Price</label>
+					<input
+						type='number'
+						name='price'
+						defaultValue={car ? car.price : ''}
+					/>
+					<label htmlFor='gearbox'>Gearbox</label>
+					<select name='gearbox' defaultValue={car ? car.gearbox : ''}>
 						<option value='Automatic'>Automatic</option>
 						<option value='Manual'>Manual</option>
 					</select>
-					<label htmlFor=''>Doors</label>
-					<select name='door' id=''>
+					<label htmlFor='door'>Doors</label>
+					<select name='door' defaultValue={car ? car.door : ''}>
 						<option value='3'>3</option>
 						<option value='5'>5</option>
 					</select>
-					<label htmlFor=''>Bags</label>
-					<select name='bags' id=''>
+					<label htmlFor='bags'>Bags</label>
+					<select name='bags' defaultValue={car ? car.bags : ''}>
 						<option value='1'>1</option>
 						<option value='2'>2</option>
 						<option value='3'>3</option>
 						<option value='4'>4</option>
 						<option value='5'>5</option>
 					</select>
-					<label htmlFor=''>Passengers</label>
-					<select name='passenger' id=''>
+					<label htmlFor='passenger'>Passengers</label>
+					<select name='passenger' defaultValue={car ? car.passenger : ''}>
 						<option value='2'>2</option>
 						<option value='3'>3</option>
 						<option value='4'>4</option>
@@ -50,8 +59,8 @@ export function AddCarModal({ hideModal }) {
 						<option value='7'>7</option>
 						<option value='9'>9</option>
 					</select>
-					<label htmlFor=''>Type</label>
-					<select name='type' id=''>
+					<label htmlFor='type'>Type</label>
+					<select name='type' defaultValue={car ? car.type : ''}>
 						<option value='mini'>mini</option>
 						<option value='compact'>compact</option>
 						<option value='estate'>estate</option>
@@ -59,7 +68,8 @@ export function AddCarModal({ hideModal }) {
 						<option value='van'>van</option>
 						<option value='special'>special</option>
 					</select>
-					<input type='file' />
+					<label htmlFor='picture'>Picture</label>
+					<input type='file' name='picture' onChange={handleImagePreview} />
 					<button>Add Car</button>
 				</form>
 			</div>
@@ -77,10 +87,10 @@ export const getServerSideProps = async () => {
 };
 export default function AdminCarsPage({ cars }) {
 	const [showModal, setShowModal] = useState(false);
-	console.log(cars);
+
 	return (
 		<AdminPage>
-			{showModal && <AddCarModal hideModal={setShowModal} />}
+			{showModal && <AddCarModal hideModal={setShowModal} car={null} />}
 
 			<button
 				className='add-car-btn'
@@ -92,58 +102,7 @@ export default function AdminCarsPage({ cars }) {
 			</button>
 			<div className='cars-container'>
 				{cars.map((car) => (
-					<div className='car'>
-						<div className='car-info'>
-							<img src={car.img} alt='car-img' />
-							<div className='box'>
-								<span className='label'>Id:</span>
-								<span>{car.id}</span>
-							</div>
-							<div className='box'>
-								<span className='label'>Name:</span>
-								<span>{car.name}</span>
-							</div>
-							<div className='box'>
-								<span className='label'>Type:</span>
-								<span>{car.type[0]}</span>
-							</div>
-							<div className='box'>
-								<span className='label'>Price:</span>
-								<span>{car.price}</span>
-							</div>
-							<div className='box'>
-								<span className='label'>Price:</span>
-								<span>{car.price}</span>
-							</div>
-							<div className='box'>
-								<span className='label'>Passengers:</span>
-								<span>{car.passenger}</span>
-							</div>
-							<div className='box'>
-								<span className='label'>Gearbox:</span>
-								<span>{car.gearbox}</span>
-							</div>
-							<div className='box'>
-								<span className='label'>Door:</span>
-								<span>{car.door}</span>
-							</div>
-							<div className='box'>
-								<span className='label'>Bags:</span>
-								<span>{car.bags}</span>
-							</div>
-						</div>
-						<div className='buttons-box'>
-							<button>
-								<IoClose size={20} />
-							</button>
-							<button>
-								<FaRegEdit size={20} />
-							</button>
-							{/* <button>
-										<IoIosArrowDropdown size={20} />
-									</button> */}
-						</div>
-					</div>
+					<Car car={car}></Car>
 				))}
 			</div>
 		</AdminPage>

@@ -1,6 +1,5 @@
 @import '../../styles/variabels';
 .admin-page {
-	
 	display: flex;
 	flex-direction: row;
 	height: 100%;
@@ -10,9 +9,11 @@
 	}
 	.add-car-modal {
 		display: flex;
+
 		justify-content: center;
 		align-items: center;
 		position: fixed;
+		z-index: 5000;
 		top: 0;
 		left: 0;
 		height: 100vh;
@@ -22,9 +23,11 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			flex-direction: column;
 			position: relative;
+			padding: 20px;
 			width: 70%;
-			height: 70%;
+
 			background-color: white;
 			border-radius: 10px;
 			.close-modal {
@@ -42,14 +45,14 @@
 				label {
 					font-size: 1.8rem;
 				}
-				input{
+				input {
 					padding: 5px;
 				}
-				select{
+				select {
 					padding: 5px;
 					font-size: 1.8rem;
 				}
-				button{
+				button {
 					margin: 15px auto;
 					padding: 5px;
 					width: 50%;
