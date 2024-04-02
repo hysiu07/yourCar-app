@@ -7,7 +7,9 @@ export default function Car({ car }) {
 	const [showEditModal, setShowEditModal] = useState(false);
 	return (
 		<div className='car'>
-			{showEditModal && <AddCarModal car={car} hideModal={setShowEditModal} />}
+			{showEditModal && (
+				<AddCarModal car={car} setShowModal={setShowEditModal} />
+			)}
 			<div className='car-info'>
 				<img src={car.img} alt='car-img' />
 				<div className='box'>
@@ -48,10 +50,10 @@ export default function Car({ car }) {
 				</div>
 			</div>
 			<div className='buttons-box'>
-				{/* <button>
+				<button disabled>
 					<IoClose size={20} />
-				</button> */}
-				<button
+				</button>
+				<button disabled
 					onClick={() => {
 						setShowEditModal(true);
 					}}

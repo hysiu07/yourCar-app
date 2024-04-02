@@ -17,6 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "services/airtableClient.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "services/airtableClient.js", "pages/api/upload.js"],
   "exclude": ["node_modules"]
 }
