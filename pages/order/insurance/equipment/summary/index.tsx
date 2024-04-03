@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { useSession } from 'next-auth/react';
+import PaymentBtn from './PaymentBtn';
 
 function SummaryPage({ reservation }) {
 	const { data, data: session } = useSession();
@@ -17,15 +18,10 @@ function SummaryPage({ reservation }) {
 				</div>
 				{!session ? (
 					<div className='info-container'>
-						<p>You haveto log in!</p>
+						<p>You have to log in!</p>
 					</div>
 				) : (
-					<button
-						disabled={!session}
-						className={`btn-go-to-payment ${!session ? 'disabled-btn' : ''}`}
-					>
-						Go to payment
-					</button>
+					<PaymentBtn />
 				)}
 			</div>
 		</BaseLayout>

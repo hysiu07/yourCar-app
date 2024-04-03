@@ -4,16 +4,17 @@ export default async function handler(req, res) {
 	if (req.method === 'POST') {
 		try {
 			// Create Checkout Sessions from body params.
+			const price = req.body
 			const session = await stripe.checkout.sessions.create({
 				line_items: [
 					{
 						// Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-						price: '{{PRICE_ID}}',
+						price: 'price_1P1XOMIW9HXEwFUkIPC74Iq7',
 						quantity: 1,
 					},
 				],
 				mode: 'payment',
-				success_url: `${req.headers.origin}/?success=true`,
+				success_url: process.env.NEXT_PUBLIC_BASE_URL,
 				cancel_url: `${req.headers.origin}/?canceled=true`,
 			});
 			res.redirect(303, session.url);
