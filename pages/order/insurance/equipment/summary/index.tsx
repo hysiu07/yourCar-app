@@ -21,7 +21,7 @@ function SummaryPage({ reservation }) {
 						<p>You have to log in!</p>
 					</div>
 				) : (
-					<PaymentBtn />
+						<PaymentBtn user={session.user} />
 				)}
 			</div>
 		</BaseLayout>

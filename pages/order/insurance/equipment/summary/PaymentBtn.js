@@ -2,6 +2,8 @@ import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 // import BaseLayout from '@/components/BaseLayout';
 import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { addUser } from '@/redux/reservationinfo';
 import ReservationComponentContent from '@/components/ReservationComponent/ReservationComponentContent';
 // import axios from 'axios';
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -9,7 +11,8 @@ import ReservationComponentContent from '@/components/ReservationComponent/Reser
 const stripePromise = loadStripe(
 	process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
-function PaymentBtn({ reservation }) {
+function PaymentBtn({ reservation, user }) {
+	const dispatch = useDispatch();
 	console.log(reservation);
 	// React.useEffect(() => {
 	// 	// Check to see if this is a redirect back from Checkout
@@ -39,11 +42,9 @@ function PaymentBtn({ reservation }) {
 		// 			'Content-Type': 'application/json',
 		// 		},
 		// 	});
-
 		// 	if (!response.ok) {
 		// 		throw new Error('Failed to fetch');
 		// 	}
-
 		// 	// Obsłuż sukces
 		// } catch (error) {
 		// 	console.error('Error:', error.message);
@@ -63,6 +64,9 @@ function PaymentBtn({ reservation }) {
 						// 	e.preventDefault();
 						// 	handlePayForCar(reservation.priceSum);
 						// }}
+						onClick={() => {
+							dispatch(addUser(user.id));
+						}}
 					>
 						Pay for Car!
 					</button>

@@ -20,7 +20,6 @@ export function Additive({
 	equipment,
 	setEquipment,
 }) {
-	console.log(equipment);
 	const [active, setActive] = useState<boolean>(false);
 	return (
 		<div className={`additive ${active && 'active-additive'}`}>
@@ -43,7 +42,6 @@ export function Additive({
 						setEquipment(equipment.filter((item) => item.title !== title));
 						setActive(false);
 					}
-					console.log(equipment);
 				}}
 			>
 				ADD
@@ -55,7 +53,7 @@ export function Additive({
 export default function EquipmentPage() {
 	const [equipments, setEquipments] = useState<[]>([]);
 	const dispatch = useDispatch();
-	console.log(equipments);
+
 	return (
 		<BaseLayout>
 			<div className='equipment-page'>

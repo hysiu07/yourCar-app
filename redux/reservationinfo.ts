@@ -1,4 +1,5 @@
 const ADD_CITY_AND_DATE = 'reservation/ADD_CITY_AND_DATE';
+const ADD_USER = 'reservation/USER';
 const ADD_VEHICLE = 'reservation/ADD_VEHICLE';
 const ADD_INSURANCE = 'reservation/ADD_INSURANCE';
 const ADD_EQUIPMENT = 'reservation/ADD_EQUIPMENT';
@@ -11,6 +12,8 @@ type EquipmentItem = {
 
 type InitialStateType = {
 	processing: boolean;
+	username: null | string;
+	email: null | string;
 	carInfo: {
 		carName: null | string;
 		cartype: null | string;
@@ -33,6 +36,8 @@ type InitialStateType = {
 
 const INITIAL_STATE_RESERVATION: InitialStateType = {
 	processing: false,
+	username: null,
+	email: null,
 	carInfo: {
 		carName: null,
 		cartype: null,
@@ -55,6 +60,10 @@ const INITIAL_STATE_RESERVATION: InitialStateType = {
 export const addCityandDate = (city, pickUpDate, returDate, numberDays) => ({
 	type: ADD_CITY_AND_DATE,
 	payload: { city, pickUpDate, returDate, numberDays },
+});
+export const addUser = (userID) => ({
+	type: ADD_USER,
+	payload: { userID },
 });
 export const addCar = (carId, offerId, carPrice, carName, carType, carImg) => ({
 	type: ADD_VEHICLE,
@@ -80,6 +89,7 @@ export const reducerReservationInfo = (
 		case ADD_CITY_AND_DATE:
 			const { city, pickUpDate, returDate, numberDays } = action.payload;
 			return {
+				...state,
 				processing: false,
 				carInfo: {
 					carName: null,
@@ -110,7 +120,8 @@ export const reducerReservationInfo = (
 					carType: carType,
 					carImg: carImg,
 					carId: carId,
-					carPrice: state.numberDays && carPrice * state.numberDays,
+					carPrice:
+						state.numberDays !== null ? carPrice * state.numberDays : null,
 				},
 				offerId: offerId,
 				priceSum:
@@ -118,55 +129,43 @@ export const reducerReservationInfo = (
 					(state.insurancePrice || 0) +
 					(state.equipmentsSumPrice || 0),
 			};
-
 		case ADD_INSURANCE:
 			const { insurance, insurancePrice } = action.payload;
 			return {
 				...state,
 				insuranceType: insurance,
-				insurancePrice: state.numberDays && insurancePrice * state.numberDays,
+				insurancePrice:
+					state.numberDays !== null ? insurancePrice * state.numberDays : null,
 				priceSum:
 					(state.carInfo.carPrice || 0) +
 					(insurancePrice || 0) +
 					(state.equipmentsSumPrice || 0),
 			};
-
 		case ADD_EQUIPMENT:
 			const { equipments } = action.payload;
-			const priceSum = equipments.reduce((total, equipment) => {
+			const equipmentsSumPrice = equipments.reduce((total, equipment) => {
 				const equipmentPrice = equipment.price || 0;
 				return total + equipmentPrice;
 			}, 0);
 			return {
 				...state,
 				equipments: equipments,
-				equipmentsSumPrice: priceSum,
+				equipmentsSumPrice: equipmentsSumPrice,
 				priceSum:
 					(state.carInfo.carPrice || 0) +
 					(state.insurancePrice || 0) +
-					priceSum,
+					equipmentsSumPrice,
+			};
+		case ADD_USER:
+			const { userID, email } = action.payload;
+
+			return {
+				...state,
+				username: userID,
+				// email: email,
 			};
 		case RESET:
-			return {
-				processing: false,
-				carInfo: {
-					carName: null,
-					cartype: null,
-					carImg: null,
-					carId: null,
-					carPrice: null,
-				},
-				city: null,
-				pickUpDate: null,
-				returDate: null,
-				numberDays: null,
-				offerId: null,
-				insuranceType: null,
-				insurancePrice: null,
-				equipments: null,
-				equipmentsSumPrice: null,
-				priceSum: null,
-			};
+			return INITIAL_STATE_RESERVATION;
 		default:
 			return state;
 	}

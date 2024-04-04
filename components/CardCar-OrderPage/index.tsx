@@ -58,7 +58,7 @@ export default function CardCarOrder({ offer }) {
 				href='/order/insurance'
 				className='btn-go-on'
 				onClick={() => {
-					console.log(offer.id);
+					
 					dispatch(
 						addCar(
 							offer.idCar[0],

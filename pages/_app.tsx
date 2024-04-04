@@ -1,7 +1,6 @@
 import '@/styles/globals.scss';
 import { SessionProvider } from 'next-auth/react';
 import { Provider } from 'react-redux';
-// import store from '@/redux/store';
 import type { AppProps } from 'next/app';
 import { persistor, store } from '../redux/configureStorePersist';
 import { PersistGate } from 'redux-persist/integration/react';
