@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { addInsurance } from '@/redux/reservationinfo';
 import Link from 'next/link';
 
+import { useSession } from 'next-auth/react';
 export default function InsuracnePage() {
 	const [insuracne, setInsurance] = useState('');
 	const dispatch = useDispatch();

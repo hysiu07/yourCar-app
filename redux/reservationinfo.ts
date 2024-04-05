@@ -3,6 +3,7 @@ const ADD_USER = 'reservation/USER';
 const ADD_VEHICLE = 'reservation/ADD_VEHICLE';
 const ADD_INSURANCE = 'reservation/ADD_INSURANCE';
 const ADD_EQUIPMENT = 'reservation/ADD_EQUIPMENT';
+const ADD_RESERVATION = 'reservation/ADD_RESERVATION';
 const RESET = 'reservation/RESET';
 
 type EquipmentItem = {
@@ -12,6 +13,7 @@ type EquipmentItem = {
 
 type InitialStateType = {
 	processing: boolean;
+	reserved: boolean;
 	username: null | string;
 	email: null | string;
 	carInfo: {
@@ -30,12 +32,13 @@ type InitialStateType = {
 	insuranceType: string | null;
 	insurancePrice: number | null;
 	equipments: EquipmentItem[] | [] | null;
-	equipmentsSumPrice: number | null;
+	equipmentsSum: number | null;
 	priceSum: number | null;
 };
 
 const INITIAL_STATE_RESERVATION: InitialStateType = {
 	processing: false,
+	reserved: false,
 	username: null,
 	email: null,
 	carInfo: {
@@ -53,7 +56,7 @@ const INITIAL_STATE_RESERVATION: InitialStateType = {
 	insuranceType: null,
 	insurancePrice: null,
 	equipments: null,
-	equipmentsSumPrice: null,
+	equipmentsSum: null,
 	priceSum: null,
 };
 
@@ -61,9 +64,9 @@ export const addCityandDate = (city, pickUpDate, returDate, numberDays) => ({
 	type: ADD_CITY_AND_DATE,
 	payload: { city, pickUpDate, returDate, numberDays },
 });
-export const addUser = (userID) => ({
+export const addUser = (user) => ({
 	type: ADD_USER,
-	payload: { userID },
+	payload: { user },
 });
 export const addCar = (carId, offerId, carPrice, carName, carType, carImg) => ({
 	type: ADD_VEHICLE,
@@ -76,6 +79,10 @@ export const addInsurance = (insurance, insurancePrice) => ({
 export const addEquipment = (equipments) => ({
 	type: ADD_EQUIPMENT,
 	payload: { equipments },
+});
+export const addReservation = (reservation) => ({
+	type: ADD_RESERVATION,
+	payload: { reservation },
 });
 export const reset = () => ({
 	type: RESET,
@@ -106,7 +113,7 @@ export const reducerReservationInfo = (
 				insuranceType: null,
 				insurancePrice: null,
 				equipments: null,
-				equipmentsSumPrice: null,
+				equipmentsSum: null,
 				priceSum: null,
 			};
 		case ADD_VEHICLE:
@@ -115,6 +122,7 @@ export const reducerReservationInfo = (
 			return {
 				...state,
 				processing: true,
+				reserved: false,
 				carInfo: {
 					carName: carName,
 					carType: carType,
@@ -127,7 +135,7 @@ export const reducerReservationInfo = (
 				priceSum:
 					(carPrice || 0) +
 					(state.insurancePrice || 0) +
-					(state.equipmentsSumPrice || 0),
+					(state.equipmentsSum || 0),
 			};
 		case ADD_INSURANCE:
 			const { insurance, insurancePrice } = action.payload;
@@ -139,7 +147,7 @@ export const reducerReservationInfo = (
 				priceSum:
 					(state.carInfo.carPrice || 0) +
 					(insurancePrice || 0) +
-					(state.equipmentsSumPrice || 0),
+					(state.equipmentsSum || 0),
 			};
 		case ADD_EQUIPMENT:
 			const { equipments } = action.payload;
@@ -150,19 +158,29 @@ export const reducerReservationInfo = (
 			return {
 				...state,
 				equipments: equipments,
-				equipmentsSumPrice: equipmentsSumPrice,
+				equipmentsSum: equipmentsSumPrice,
 				priceSum:
 					(state.carInfo.carPrice || 0) +
 					(state.insurancePrice || 0) +
 					equipmentsSumPrice,
 			};
 		case ADD_USER:
-			const { userID, email } = action.payload;
+			const { user } = action.payload;
+			console.log(user);
+			return {
+				...state,
+				username: user.name,
+				email: user.email,
+				userID: user.id
+				// email: email,
+			};
+		case ADD_RESERVATION:
+			const { reservation } = action.payload;
 
 			return {
 				...state,
-				username: userID,
-				// email: email,
+				reserved: reservation,
+			
 			};
 		case RESET:
 			return INITIAL_STATE_RESERVATION;

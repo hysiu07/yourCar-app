@@ -10,8 +10,8 @@ import { MdAssistantNavigation } from 'react-icons/md';
 import { FaChild } from 'react-icons/fa';
 
 import { useDispatch } from 'react-redux';
-import { addEquipment } from '@/redux/reservationinfo';
-
+import { addEquipment, addUser } from '@/redux/reservationinfo';
+import { useSession } from 'next-auth/react';
 export function Additive({
 	title,
 	description,
@@ -21,6 +21,7 @@ export function Additive({
 	setEquipment,
 }) {
 	const [active, setActive] = useState<boolean>(false);
+
 	return (
 		<div className={`additive ${active && 'active-additive'}`}>
 			<div className='icon-box'>{icon}</div>
@@ -53,7 +54,7 @@ export function Additive({
 export default function EquipmentPage() {
 	const [equipments, setEquipments] = useState<[]>([]);
 	const dispatch = useDispatch();
-
+	const { data, data: session } = useSession();
 	return (
 		<BaseLayout>
 			<div className='equipment-page'>
@@ -111,15 +112,20 @@ export default function EquipmentPage() {
 						setEquipment={setEquipments}
 					/>
 				</div>
-				<Link
-					href='/order/insurance/equipment/summary'
-					className='btn-continue'
-					onClick={() => {
-						dispatch(addEquipment(equipments));
-					}}
-				>
-					Go on!
-				</Link>
+				{!session ? (
+					<Link href={'/login'} className='btn-continue logg-in-link'> You have to Loggin</Link>
+				) : (
+					<Link
+						href='/order/insurance/equipment/summary'
+						className='btn-continue'
+						onClick={() => {
+							dispatch(addEquipment(equipments));
+							dispatch(addUser(session.user))
+						}}
+					>
+						Summary
+					</Link>
+				)}
 			</div>
 		</BaseLayout>
 	);

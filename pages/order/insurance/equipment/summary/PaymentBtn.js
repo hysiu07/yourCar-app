@@ -14,6 +14,34 @@ const stripePromise = loadStripe(
 function PaymentBtn({ reservation, user }) {
 	const dispatch = useDispatch();
 	console.log(reservation);
+	// const addOrder = async () => {
+	// 		try {
+	// 			const payload = {
+	// 				username: [reservation.username],
+	// 			};
+
+	// 			const response = await fetch('/api/orders/add', {
+	// 				method: 'POST',
+	// 				body: JSON.stringify(payload),
+	// 				headers: {
+	// 					'Content-Type': 'application/json',
+	// 				},
+    //             });
+                
+    //             await dispatch(reset())
+
+	// 			if (!response.ok) {
+	// 				throw new Error('Failed to add order');
+	// 			}
+
+		
+	// 		} catch (error) {
+	// 			console.error('Error:', error.message);
+	
+	// 		}
+	// 	};
+
+	
 	// React.useEffect(() => {
 	// 	// Check to see if this is a redirect back from Checkout
 	// 	const query = new URLSearchParams(window.location.search);
@@ -59,12 +87,12 @@ function PaymentBtn({ reservation, user }) {
 					<button
 						type='submit'
 						role='link'
-						disabled={!reservation.processing}
+						disabled={!reservation.processing || !reservation.reserved}
 						// onSubmit={(e) => {
 						// 	e.preventDefault();
 						// 	handlePayForCar(reservation.priceSum);
 						// }}
-						onClick={() => {
+						onClick={async () => {
 							dispatch(addUser(user.id));
 						}}
 					>

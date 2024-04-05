@@ -13,10 +13,6 @@ function ThanksPage({ reservation }) {
 	const [reservations, setReservation] = useState(reservation);
 	const [numberReservation, setNumberReservation] = useState();
 
-	// if (!session) {
-	// 	router.push('/');
-
-	// }
 	let payload = {
 		username: [reservations.username],
 		// email: [reservations.email],
