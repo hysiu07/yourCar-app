@@ -1,9 +1,9 @@
-import { string } from 'joi';
 import airDb from '../airtableClient';
 
 const create = async (payload) => {
 	const order = await airDb('orders').create([
 		{
+			
 			fields: {
 				userID: payload.username,
 				status: 'not paid',
@@ -18,7 +18,7 @@ const create = async (payload) => {
 				carName: String(payload.carName),
 				offerId: payload.offerId,
 				equipmentsSum: String(payload.equipmentsSum),
-				equipments: payload.equipments
+				equipments: payload.equipments,
 			},
 		},
 	]);

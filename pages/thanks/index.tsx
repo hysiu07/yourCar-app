@@ -1,73 +1,73 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { reset } from '@/redux/reservationinfo';
+import Link from 'next/link';
+
 function ThanksPage({ reservation }) {
-    const dispatch = useDispatch()
-	// const { data, data: session } = useSession();
-	// const router = useRouter();
-	// console.log(session);
-	// console.log(reservation);
-	const [reservations, setReservation] = useState(reservation);
-	const [numberReservation, setNumberReservation] = useState();
+	const dispatch = useDispatch();
+	const router = useRouter();
+	const [currentReservations] = useState(reservation);
 
-	let payload = {
-		username: [reservations.username],
-		// email: [reservations.email],
-	};
-	// if (session) {
-	// }
+	const [status, setStatus] = useState<'Paid' | 'Not Paid' | 'Error' | null>(
+		null
+	);
 
-	// const response = fetch('/api/orders/add', {
-	//     method: 'POST',
-	//     body: JSON.stringify(payload),
-	//     headers: {
-	//         'Content-Type': 'application/json',
-	//     },
-	// });
-	// if (response.ok) {
-
-	// }
+	if (!currentReservations.reserved) {
+		router.push('/');
+	}
 	useEffect(() => {
-		const addOrder = async () => {
+		if (!currentReservations.reserved) {
+			router.push('/');
+			return;
+		}
+		const updateOrder = async () => {
 			try {
-				const payload = {
-					username: [reservation.username],
-				};
-
-				const response = await fetch('/api/orders/add', {
+				const response = await fetch('/api/orders/upDate', {
 					method: 'POST',
-					body: JSON.stringify(payload),
+					body: JSON.stringify(currentReservations.orderId),
 					headers: {
 						'Content-Type': 'application/json',
 					},
-                });
-                
-                await dispatch(reset())
+				});
 
-				if (!response.ok) {
-					throw new Error('Failed to add order');
+				if (response.ok) {
+					setStatus('Paid');
+					const airtableId = currentReservations.offerId;
+					const changeOfferStatus = await fetch('/api/offers/update', {
+						method: 'POST',
+						body: JSON.stringify({
+							offerInfo: { status: 'not available' },
+							offerAirtableId: airtableId,
+						}),
+						headers: {
+							'Content-Type': 'application/json',
+						},
+					});
+				} else {
+					setStatus('Not Paid');
 				}
-
-				// Tutaj możesz dodać logikę obsługi sukcesu, np. przekierowanie użytkownika
-				// router.push('/success-page');
 			} catch (error: any) {
 				console.error('Error:', error.message);
-				// Tutaj możesz dodać logikę obsługi błędu, np. wyświetlenie komunikatu o błędzie
+				setStatus('Error');
 			}
 		};
-
-		addOrder();
+		updateOrder();
 	}, []);
-	// useEffect(() => {
-	// 	return;
-	// }, [reservations]);
+	dispatch(reset());
 	return (
-		<section>
-			<h3>Thank you for your order.</h3>
-			<h4>Your order number is : {reservations.username} </h4>
+		<section className='thanks-page'>
+			{currentReservations.reserved ? (
+				<>
+					<h3>Thank you for your order.</h3>
+					<h4>Your order number is : {currentReservations.orderId} </h4>
+					<Link href={'/'}>Home Page</Link>
+					<h3>Status: {status}</h3>
+				</>
+			) : (
+				<h2>Booking error!</h2>
+			)}
 		</section>
 	);
 }

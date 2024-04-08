@@ -61,7 +61,6 @@ export default function Offer({ offer, cars }) {
 					: { background: 'white' }
 			}
 		>
-			
 			{showPopUp && (
 				<PopUpAdmin
 					text='Do you want delete offer?'

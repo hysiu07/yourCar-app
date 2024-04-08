@@ -7,7 +7,7 @@ export default function OfferEditPanel({
 	cars,
 }) {
 	const offerForm = useRef<null | any>(null);
-	console.log(offer);
+
 	return (
 		<div className='edit-offer-component'>
 			<div className='panel'>
@@ -30,7 +30,7 @@ export default function OfferEditPanel({
 					<label htmlFor='price'>Price: </label>
 					<input type='number' name='price' defaultValue={offer.price} />
 					<label htmlFor='car'>Car:</label>
-					<select name='car' value={offer.idCar}>
+					<select name='car' defaultValue={offer.cars[0]}>
 						{cars.map((car) => {
 							return (
 								<option value={car.airtableId} key={car.index}>

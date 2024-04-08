@@ -1,10 +1,10 @@
 import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-// import BaseLayout from '@/components/BaseLayout';
+
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { addUser } from '@/redux/reservationinfo';
-import ReservationComponentContent from '@/components/ReservationComponent/ReservationComponentContent';
+
 // import axios from 'axios';
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -13,35 +13,7 @@ const stripePromise = loadStripe(
 );
 function PaymentBtn({ reservation, user }) {
 	const dispatch = useDispatch();
-	console.log(reservation);
-	// const addOrder = async () => {
-	// 		try {
-	// 			const payload = {
-	// 				username: [reservation.username],
-	// 			};
 
-	// 			const response = await fetch('/api/orders/add', {
-	// 				method: 'POST',
-	// 				body: JSON.stringify(payload),
-	// 				headers: {
-	// 					'Content-Type': 'application/json',
-	// 				},
-    //             });
-                
-    //             await dispatch(reset())
-
-	// 			if (!response.ok) {
-	// 				throw new Error('Failed to add order');
-	// 			}
-
-		
-	// 		} catch (error) {
-	// 			console.error('Error:', error.message);
-	
-	// 		}
-	// 	};
-
-	
 	// React.useEffect(() => {
 	// 	// Check to see if this is a redirect back from Checkout
 	// 	const query = new URLSearchParams(window.location.search);
@@ -85,6 +57,7 @@ function PaymentBtn({ reservation, user }) {
 			<form action='/api/checkout_sessions' method='POST'>
 				<section>
 					<button
+						className={`${reservation.reserved ? '' : 'disabled-btn'}`}
 						type='submit'
 						role='link'
 						disabled={!reservation.processing || !reservation.reserved}
@@ -112,19 +85,17 @@ function PaymentBtn({ reservation, user }) {
 							justify-content: space-between;
 						}
 						button {
-							height: 36px;
-
+							padding: 8px 16px;
 							background: #3083ff;
-							border-radius: 4px;
+							border-radius: 5px;
+							width: 200px;
+							margin: 0 auto;
 							color: white;
 							border: 0;
-							font-weight: 600;
+							font-size: 1.6rem;
 							cursor: pointer;
 							transition: all 0.2s ease;
 							box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-						}
-						button:hover {
-							opacity: 0.8;
 						}
 					`}
 				</style>

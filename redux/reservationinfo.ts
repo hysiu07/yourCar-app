@@ -4,6 +4,7 @@ const ADD_VEHICLE = 'reservation/ADD_VEHICLE';
 const ADD_INSURANCE = 'reservation/ADD_INSURANCE';
 const ADD_EQUIPMENT = 'reservation/ADD_EQUIPMENT';
 const ADD_RESERVATION = 'reservation/ADD_RESERVATION';
+const ADD_ORDERID = 'reservation/ADD_ORDERID';
 const RESET = 'reservation/RESET';
 
 type EquipmentItem = {
@@ -34,6 +35,7 @@ type InitialStateType = {
 	equipments: EquipmentItem[] | [] | null;
 	equipmentsSum: number | null;
 	priceSum: number | null;
+	orderId: string | null;
 };
 
 const INITIAL_STATE_RESERVATION: InitialStateType = {
@@ -58,6 +60,7 @@ const INITIAL_STATE_RESERVATION: InitialStateType = {
 	equipments: null,
 	equipmentsSum: null,
 	priceSum: null,
+	orderId: null,
 };
 
 export const addCityandDate = (city, pickUpDate, returDate, numberDays) => ({
@@ -83,6 +86,10 @@ export const addEquipment = (equipments) => ({
 export const addReservation = (reservation) => ({
 	type: ADD_RESERVATION,
 	payload: { reservation },
+});
+export const addOrderId = (id) => ({
+	type: ADD_ORDERID,
+	payload: { id },
 });
 export const reset = () => ({
 	type: RESET,
@@ -115,6 +122,7 @@ export const reducerReservationInfo = (
 				equipments: null,
 				equipmentsSum: null,
 				priceSum: null,
+				orderId: null,
 			};
 		case ADD_VEHICLE:
 			const { carId, offerId, carPrice, carName, carType, carImg } =
@@ -171,8 +179,7 @@ export const reducerReservationInfo = (
 				...state,
 				username: user.name,
 				email: user.email,
-				userID: user.id
-				// email: email,
+				userID: user.id,
 			};
 		case ADD_RESERVATION:
 			const { reservation } = action.payload;
@@ -180,7 +187,13 @@ export const reducerReservationInfo = (
 			return {
 				...state,
 				reserved: reservation,
-			
+			};
+		case ADD_ORDERID:
+			const { id } = action.payload;
+
+			return {
+				...state,
+				orderId: id,
 			};
 		case RESET:
 			return INITIAL_STATE_RESERVATION;
