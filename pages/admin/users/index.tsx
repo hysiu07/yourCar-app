@@ -17,7 +17,7 @@ export default function AdminUsersPage({ users }) {
 	return (
 		<AdminPage>
 			<div className='users-container'>
-				<form action=''>
+				<form action='' className='form-search-user'>
 					<label>Search user:</label>
 					<input type='text' placeholder='write here user email' />
 				</form>

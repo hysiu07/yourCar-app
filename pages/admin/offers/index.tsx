@@ -26,6 +26,7 @@ export default function AdminOffersPage({ offers, cars }) {
 				onClick={() => {
 					setShowAddPanel(true);
 				}}
+				className='btn-admin-page'
 			>
 				Add Offer
 			</button>

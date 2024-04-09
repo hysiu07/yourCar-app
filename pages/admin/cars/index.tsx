@@ -57,7 +57,7 @@ export function AddCarModal({ setShowModal, car }) {
 			router.push('/admin/cars');
 			setShowModal(false);
 		}
-		console.log(payload);
+	
 	};
 	return (
 		<div className='add-car-modal'>

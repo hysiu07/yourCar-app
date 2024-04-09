@@ -4,12 +4,20 @@
 	flex-direction: row;
 	height: 100%;
 	min-height: 100vh;
+
+	.btn-admin-page {
+		padding: 8px 14px;
+		border-radius: 10px;
+		border: none;
+		background-color: $main-color;
+		color: white;
+		cursor: pointer;
+	}
 	.add-car-btn {
 		padding: 5px 10px;
 	}
 	.add-car-modal {
 		display: flex;
-
 		justify-content: center;
 		align-items: center;
 		position: fixed;
@@ -31,7 +39,6 @@
 			position: relative;
 			padding: 20px;
 			width: 70%;
-
 			background-color: white;
 			border-radius: 10px;
 			.close-modal {
@@ -73,12 +80,17 @@
 		.offers-container,
 		.cars-container,
 		.orders-container {
+		
 			form {
 				label {
+					margin-right: 10px;
 					font-size: 1.6rem;
+					font-family: 'Roboto Condensed', sans-serif;
 				}
 				input {
 					padding: 10px;
+					border-radius: 10px;
+					border: 1px solid black;
 				}
 			}
 			display: flex;
@@ -123,6 +135,17 @@
 						font-size: 1.6rem;
 					}
 				}
+				.hidden-info {
+					margin-top: 10px;
+				}
+				// .btn-admin-page {
+				// 	padding: 8px 14px;
+				// 	border-radius: 10px;
+				// 	border: none;
+				// 	background-color: $main-color;
+				// 	color: white;
+				// 	cursor: pointer;
+				// }
 				.buttons-box {
 					display: flex;
 					justify-content: center;
