@@ -156,7 +156,7 @@ export default function AdminCarsPage({ cars }) {
 			{showModal && <AddCarModal setShowModal={setShowModal} car={null} />}
 
 			<button
-				className='add-car-btn'
+				className='add-car-btn btn-admin-page'
 				onClick={() => {
 					setShowModal(true);
 				}}

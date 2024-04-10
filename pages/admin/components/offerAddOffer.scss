@@ -1,0 +1,25 @@
+.edit-offer-component {
+	.panel {
+		font-family: 'Roboto Condensed', sans-serif;
+		form {
+			label {
+				font-size: 1.6rem;
+                color: black;
+			}
+			select {
+				padding: 5px;
+				margin-bottom: 5px;
+                border-radius: 10px;
+			}
+		}
+		.buttons-container {
+			display: flex;
+			justify-content: space-around;
+			button {
+				margin-top: 5px;
+				padding: 5px 10px;
+				cursor: pointer;
+			}
+		}
+	}
+}

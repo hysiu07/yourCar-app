@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaRegUser } from 'react-icons/fa';
+
 import { IoClose } from 'react-icons/io5';
 import { FaRegEdit } from 'react-icons/fa';
 import { AddCarModal } from '..';
@@ -53,16 +53,14 @@ export default function Car({ car }) {
 				<button disabled>
 					<IoClose size={20} />
 				</button>
-				<button disabled
+				<button
+					disabled
 					onClick={() => {
 						setShowEditModal(true);
 					}}
 				>
 					<FaRegEdit size={20} />
 				</button>
-				{/* <button>
-										<IoIosArrowDropdown size={20} />
-									</button> */}
 			</div>
 		</div>
 	);

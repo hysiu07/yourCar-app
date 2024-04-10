@@ -28,7 +28,7 @@ export default function OfferAddOffer({ closeAddPanel, cars }) {
 	return (
 		<div className='edit-offer-component'>
 			<div className='panel'>
-				<h3>Edit Add Panel</h3>
+				<h3> Add Offer Panel</h3>
 				<form ref={offerForm}>
 					<label htmlFor='status'>Status</label>
 					<select name='status'>
