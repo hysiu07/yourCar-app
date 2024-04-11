@@ -80,8 +80,7 @@
 
 		.users-container,
 		.offers-container,
-		.cars-container,
-		.orders-container {
+		.cars-container {
 			form {
 				label {
 					margin-right: 10px;
@@ -101,8 +100,7 @@
 
 			.user,
 			.offer,
-			.car,
-			.order {
+			.car {
 				position: relative;
 				display: flex;
 				justify-content: space-between;
@@ -110,11 +108,11 @@
 				padding: 10px;
 				margin: 10px 0;
 				width: 100%;
-				max-width: 1600px;
+				max-width: 1200px;
 				box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 				border-radius: 10px;
 				img {
-					width: 200px;
+					width: 180px;
 				}
 				.modal {
 					position: absolute;
@@ -125,23 +123,18 @@
 					left: -20px;
 					background-color: rgba(0, 0, 0, 0.5);
 				}
-				.order-info {
-					flex-wrap: wrap;
-					align-items: start;
-				}
+
 				.user-info,
 				.offer-info,
-				.car-info,
-				.order-info {
+				.car-info {
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					
-
+					flex-wrap: wrap;
 					.box {
 						display: flex;
 						flex-direction: column;
-						margin: 0 20px;
+						margin: 0 10px;
 						.label {
 							color: $main-color;
 							font-weight: bold;
@@ -151,13 +144,6 @@
 						font-family: 'Roboto Condensed', sans-serif;
 						font-size: 1.4rem;
 					}
-				}
-				.btn-more-info {
-					margin: 10px auto;
-					width: 30%;
-				}
-				.hidden-info {
-					margin-top: 10px;
 				}
 
 				.buttons-box {
@@ -173,11 +159,48 @@
 				}
 			}
 		}
-		.offers-container {
-			.offer {
+		.orders-container {
+			.not-paid-status {
+				background-color: gray;
+				color: white;
+			}
+			form {
+				input {
+					padding: 5px;
+				}
+				button {
+					margin: 0 10px;
+				}
+			}
+			.order {
+				position: relative;
+				display: flex;
+				flex-direction: column;
 				padding: 10px;
 				margin: 10px 0;
-				border: 1px solid black;
+				max-width: 1600px;
+				box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+				border-radius: 10px;
+
+				.order-info {
+					display: flex;
+					flex-direction: row;
+					align-items: start;
+					margin-top: 10px;
+					.box {
+						display: flex;
+						flex-direction: column;
+						margin: 0 20px;
+						.label {
+							color: $main-color;
+							font-weight: bold;
+						}
+					}
+					span {
+						font-family: 'Roboto Condensed', sans-serif;
+						font-size: 1.4rem;
+					}
+				}
 			}
 		}
 	}

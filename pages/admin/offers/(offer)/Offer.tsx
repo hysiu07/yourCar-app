@@ -1,7 +1,6 @@
 import React from 'react';
 import OfferEditPanel from '../../components/OffersEditPanel';
 import { MdOutlineLocalOffer } from 'react-icons/md';
-import { FaRegUser } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import { FaRegEdit } from 'react-icons/fa';
 import PopUpAdmin from '../../components/PopUpAdmin';
@@ -54,7 +53,6 @@ export default function Offer({ offer, cars }) {
 	return (
 		<div
 			className='offer'
-			key={offer.id}
 			style={
 				offer.status === 'not available'
 					? { background: '#8d7e7e80', color: 'white' }

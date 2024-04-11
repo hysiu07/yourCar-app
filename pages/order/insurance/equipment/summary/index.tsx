@@ -8,9 +8,7 @@ import PaymentBtn from './PaymentBtn';
 import { addOrderId, addReservation } from '@/redux/reservationinfo';
 
 const ReservationBtn = ({ user, reservation }) => {
-	console.log(reservation);
 	const dispatch = useDispatch();
-
 	const [equipments, setEquipmnts] = useState<string[] | []>([]);
 
 	reservation.equipments.forEach((eq: any) => {
@@ -49,6 +47,7 @@ const ReservationBtn = ({ user, reservation }) => {
 			}
 
 			const data = await response.json();
+
 			const orderId = data.order[0].id;
 			dispatch(addOrderId(orderId));
 		} catch (error: any) {
@@ -56,7 +55,8 @@ const ReservationBtn = ({ user, reservation }) => {
 		}
 	};
 	return (
-		<button className={`reservation-btn ${reservation.reserved && 'disabled-btn'}`}
+		<button
+			className={`reservation-btn ${reservation.reserved && 'disabled-btn'}`}
 			onClick={() => {
 				dispatch(addReservation(true));
 				addOrder(reservation);

@@ -9,6 +9,7 @@ function ThanksPage({ reservation }) {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const [currentReservations] = useState(reservation);
+	console.log(currentReservations);
 
 	const [status, setStatus] = useState<'Paid' | 'Not Paid' | 'Error' | null>(
 		null

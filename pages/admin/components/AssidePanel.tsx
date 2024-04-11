@@ -4,8 +4,8 @@ export default function AssidePanel() {
 	return (
 		<div>
 			<div className='asside-panel'>
-				<Link href={'/admin'} className='link'>
-					Dashboard
+				<Link href={`${process.env.NEXT_PUBLIC_BASE_URL}`} className='link'>
+					Home
 				</Link>
 				<Link href={'/admin/users'} className='link'>
 					Users

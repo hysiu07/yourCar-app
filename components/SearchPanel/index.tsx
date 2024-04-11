@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
+import { ThreeDots } from 'react-loader-spinner';
 interface Payload {
 	location: string;
 	pickUpDate: string;
@@ -13,7 +14,7 @@ export default function SearchPanel() {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 	const [tomorrowDate, setTomorrowDate] = useState<Date | null>();
 	const [error, setError] = useState<null | string>(null);
-
+	const [showLoader, setShowLoader] = useState(false);
 	useEffect(() => {
 		const tomorrow = new Date();
 		tomorrow.setDate(tomorrow.getDate() + 1);
@@ -39,6 +40,7 @@ export default function SearchPanel() {
 			setError(null);
 		}
 		if (payload.location && payload.pickUpDate && payload.returDate) {
+			setShowLoader(true);
 			router.push({
 				pathname: '/order/',
 				query: {
@@ -89,7 +91,22 @@ export default function SearchPanel() {
 						}
 					/>
 				</div>
-				<button type='submit'>Search!</button>
+				<button type='submit'>
+					{showLoader ? (
+						<ThreeDots
+							visible={true}
+							height='20'
+							width='25'
+							color='white'
+							radius='9'
+							ariaLabel='three-dots-loading'
+							wrapperStyle={{}}
+							wrapperClass=''
+						/>
+					) : (
+						'Search!'
+					)}
+				</button>
 			</form>
 			<p className='error'>{error}</p>
 		</div>

@@ -1,11 +1,17 @@
 import React from 'react';
 
 export default function Order({ order }) {
-
+	console.log(order.status);
 	return (
-		<div className='order'>
-	
-			<div className='order-info'>
+		<div
+			className='order'
+			style={
+				order.status === 'not paid'
+					? { background: '#8d7e7e80', color: 'white' }
+					: { background: 'white' }
+			}
+		>
+			<div className='order-info '>
 				<div className='box'>
 					<span className='label'>Order ID:</span>
 					<span>{order.airtableId}</span>
@@ -34,6 +40,8 @@ export default function Order({ order }) {
 					<span className='label'>Retur:</span>
 					<span>{order.returDate}</span>
 				</div>
+			</div>
+			<div className='order-info'>
 				<div className='box'>
 					<span className='label'>Number days:</span>
 					<span>{order.numberDays}</span>
@@ -79,6 +87,5 @@ export default function Order({ order }) {
 				</div>
 			</div>
 		</div>
-	
 	);
 }
