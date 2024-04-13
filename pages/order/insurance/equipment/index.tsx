@@ -12,6 +12,8 @@ import { FaChild } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { addEquipment, addUser } from '@/redux/reservationinfo';
 import { useSession } from 'next-auth/react';
+import { ThreeDots } from 'react-loader-spinner';
+
 export function Additive({
 	title,
 	description,
@@ -53,6 +55,7 @@ export function Additive({
 
 export default function EquipmentPage() {
 	const [equipments, setEquipments] = useState<[]>([]);
+	const [loader, setLoader] = useState(false);
 	const dispatch = useDispatch();
 	const { data, data: session } = useSession();
 	return (
@@ -113,17 +116,34 @@ export default function EquipmentPage() {
 					/>
 				</div>
 				{!session ? (
-					<Link href={'/login'} className='btn-continue logg-in-link'> You have to Loggin</Link>
+					<Link href={'/login'} className='btn-continue logg-in-link'>
+						{' '}
+						You have to Loggin
+					</Link>
 				) : (
 					<Link
 						href='/order/insurance/equipment/summary'
 						className='btn-continue'
 						onClick={() => {
 							dispatch(addEquipment(equipments));
-							dispatch(addUser(session.user))
+							dispatch(addUser(session.user));
+							setLoader(true);
 						}}
 					>
-						Summary
+						{loader ? (
+							<ThreeDots
+								visible={true}
+								height='30'
+								width='30'
+								color='white'
+								radius='9'
+								ariaLabel='three-dots-loading'
+								wrapperStyle={{}}
+								wrapperClass=''
+							/>
+						) : (
+							'Go on'
+						)}
 					</Link>
 				)}
 			</div>

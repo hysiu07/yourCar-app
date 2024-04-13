@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import BaseLayout from '@/components/BaseLayout';
 import { useRouter } from 'next/router';
-import getCarsLocation from '@/services/cars/getCarsLocation';
-import { daysNumber } from '@/services/functions/daysNumber';
-
-import CardCarOrder from '@/components/CardCar-OrderPage';
 
 import { useDispatch } from 'react-redux';
 import { addCityandDate } from '@/redux/reservationinfo';
-import dynamic from 'next/dynamic';
+
+import getCarsLocation from '@/services/cars/getCarsLocation';
+import { daysNumber } from '@/services/functions/daysNumber';
+
+import BaseLayout from '@/components/BaseLayout';
+import CardCarOrder from '@/components/CardCar-OrderPage';
 import Filters from '@/components/Filters';
 import PaginationComponent from '@/components/Pagination-component';
 
-// const ReservationComponent = dynamic(
-// 	() => import('@/components/ReservationComponent'),
-// 	{
-// 		ssr: false, // Wyłączanie renderowania po stronie serwera
-// 	}
-// );
 
 export const getServerSideProps = async (context) => {
 	const { query } = context;

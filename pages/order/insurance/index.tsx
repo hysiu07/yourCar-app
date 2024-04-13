@@ -10,9 +10,11 @@ import { useDispatch } from 'react-redux';
 import { addInsurance } from '@/redux/reservationinfo';
 import Link from 'next/link';
 
-import { useSession } from 'next-auth/react';
+import { ThreeDots } from 'react-loader-spinner';
+
 export default function InsuracnePage() {
 	const [insuracne, setInsurance] = useState('');
+	const [loaderGoOn, setLoaderGoOn] = useState(false);
 	const dispatch = useDispatch();
 
 	return (
@@ -164,8 +166,23 @@ export default function InsuracnePage() {
 					</table>
 				</div>
 				{insuracne !== '' && (
-					<Link href={'/order/insurance/equipment'} className='btn-continue'>
-						Go on!
+					<Link href={'/order/insurance/equipment'} className='btn-continue' onClick={() => {
+						setLoaderGoOn(true)
+					}}>
+						{loaderGoOn ? (
+							<ThreeDots
+								visible={true}
+								height='30'
+								width='30'
+								color='white'
+								radius='9'
+								ariaLabel='three-dots-loading'
+								wrapperStyle={{}}
+								wrapperClass=''
+							/>
+						) : (
+							'Go on'
+						)}
 					</Link>
 				)}
 			</div>

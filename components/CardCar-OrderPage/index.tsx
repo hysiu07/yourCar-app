@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
 import { FaArrowRight } from 'react-icons/fa';
@@ -8,15 +8,17 @@ import { addCar } from '../../redux/reservationinfo';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 
+import { ThreeDots } from 'react-loader-spinner';
+
 export default function CardCarOrder({ offer }) {
-	console.log(offer);
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const differenceInDays = daysNumber(
 		router.query.returDate,
 		router.query.pickUpDate
 	);
-
+	const [loaderMoreInfoCar, setLoaderMoreInfoCar] = useState(false);
+	const [loaderGoOn, setLoaderGoOn] = useState(false);
 	return (
 		<div className='car-card-order-page'>
 			{offer.status === 'not available' && (
@@ -30,13 +32,35 @@ export default function CardCarOrder({ offer }) {
 					<p className='type'>{offer.type[0]}</p>
 				</div>
 				<div className='btn-box'>
-					<IoIosInformationCircleOutline size={20} className='icon' />
-					<Link href={`cars/${offer.idCar[0]}`} className='link'>
-						More informations
+					{!loaderMoreInfoCar && (
+						<IoIosInformationCircleOutline size={20} className='icon' />
+					)}
+
+					<Link
+						href={`cars/${offer.idCar[0]}`}
+						className='link'
+						onClick={() => {
+							setLoaderMoreInfoCar(true);
+						}}
+					>
+						{loaderMoreInfoCar ? (
+							<ThreeDots
+								visible={true}
+								height='30'
+								width='30'
+								color='#3083ff'
+								radius='9'
+								ariaLabel='three-dots-loading'
+								wrapperStyle={{}}
+								wrapperClass=''
+							/>
+						) : (
+							'More information'
+						)}
 					</Link>
 				</div>
 			</div>
-			<img src={offer.img[0]} alt='' />
+			<img src={offer.img[0]} alt='car-picture'className='img-car'/>
 
 			<div className='amount-info-box'>
 				<div className='color-box'>
@@ -68,10 +92,25 @@ export default function CardCarOrder({ offer }) {
 							offer.img[0]
 						)
 					);
+					setLoaderGoOn(true);
 				}}
 			>
-				Go on
-				<FaArrowRight className='arrow' size={20} />
+				{loaderGoOn ? (
+					<ThreeDots
+						visible={true}
+						height='30'
+						width='30'
+						color='white'
+						radius='9'
+						ariaLabel='three-dots-loading'
+						wrapperStyle={{}}
+						wrapperClass=''
+					/>
+				) : (
+					<>
+						Go on <FaArrowRight className='arrow' size={20} />
+					</>
+				)}
 			</Link>
 		</div>
 	);

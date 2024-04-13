@@ -7,6 +7,9 @@
 	width: 100vw;
 
 	.btn-continue {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		align-self: flex-end;
 		// margin: 50px auto;
 		text-align: center;
@@ -21,15 +24,15 @@
 		cursor: pointer;
 		transition: 0.3s;
 	}
-	.logg-in-link{
+	.logg-in-link {
 		font-size: 1.8rem;
 	}
-	
+
 	.btn-continue:hover {
 		color: white;
 		background-color: $main-color;
 	}
-	
+
 	&__container {
 		display: flex;
 		flex-direction: column;

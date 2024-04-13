@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react';
 import BaseLayout from '@/components/BaseLayout';
 import { useRouter } from 'next/router';
-
+import { ThreeDots } from 'react-loader-spinner';
 export default function SignIn() {
 	const userForm = useRef<null | any>(null);
 	const [error, setError] = useState<string | null>();
 	const [formProcessing, setFormProcessing] = useState(false);
+	const [loader, setLoader] = useState(false);
 	const router = useRouter();
 
 	const handleSubmit = async (e) => {
@@ -33,8 +34,9 @@ export default function SignIn() {
 				'Content-type': 'application/json',
 			},
 		});
-
+ 
 		if (response.ok) {
+			setLoader(true)
 			router.push('/');
 		} else {
 			const payload = await response.json();
@@ -73,7 +75,23 @@ export default function SignIn() {
 							name='confirm-password'
 							placeholder='Confirm Password'
 						/>
-						<button type='submit'>Register user</button>
+						<button type='submit'>
+							
+							{loader ? (
+								<ThreeDots
+									visible={true}
+									height='30'
+									width='30'
+									color='white'
+									radius='9'
+									ariaLabel='three-dots-loading'
+									wrapperStyle={{}}
+									wrapperClass=''
+								/>
+							) : (
+								'Register user'
+							)}
+						</button>
 					</form>
 					<p className='error'>{error}</p>
 				</div>

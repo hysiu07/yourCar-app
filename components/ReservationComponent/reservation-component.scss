@@ -1,4 +1,5 @@
 @import '../../styles/variabels';
+
 .reservation-component {
 	position: fixed;
 	z-index: 3000;
@@ -37,18 +38,25 @@
 	}
 }
 
-@media (max-width: 992px) {
-	.reservation-component {
-		width: 50%;
-	}
-}
+// @media (max-width: 992px) {
+// 	.reservation-component {
+// 		width: 50%;
+// 	}
+// }
 @media (max-width: 768px) {
 	.reservation-component {
 		width: 50%;
+		left: -50%;
+	}
+	.show {
 	}
 }
 @media (max-width: 576px) {
 	.reservation-component {
 		width: 100%;
+		left: -100%;
 	}
+}
+.show {
+	left: 0;
 }

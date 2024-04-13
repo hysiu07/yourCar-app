@@ -10,6 +10,7 @@ export default function ReservationComponentContent({ reservation }) {
 	const router = useRouter();
 	return reservation.processing ? (
 		<div className='reservation-component-content'>
+			<button className='close-reservation-btn'>X</button>
 			<h3>Your Reservation</h3>
 			<button
 				className='btn-cancel-reservation'

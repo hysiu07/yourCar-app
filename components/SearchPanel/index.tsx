@@ -95,8 +95,8 @@ export default function SearchPanel() {
 					{showLoader ? (
 						<ThreeDots
 							visible={true}
-							height='20'
-							width='25'
+							height='35'
+							width='40'
 							color='white'
 							radius='9'
 							ariaLabel='three-dots-loading'

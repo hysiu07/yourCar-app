@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import Link from 'next/link';
 import CarCard from '@/components/CardCar-MainView';
+import { ThreeDots } from 'react-loader-spinner';
 
 export default function MostPopular({ specialCars }) {
+	const [loader, setLoader] = useState(false);
 	return (
 		<section className='most-popular' id='most-popular'>
 			<h2>POPULAR RENTAL DEALS</h2>
@@ -24,9 +26,34 @@ export default function MostPopular({ specialCars }) {
 					);
 				})}
 			</div>
-			<Link href='/cars' className='link-show-all-vehicles'>
-				Show All Vehicles <FaLongArrowAltRight className='arrow' />
-			</Link>
+			{loader ? (
+				<Link
+					href='/cars'
+					className='link-show-all-vehicles'
+					style={loader && { border: 'none' }}
+				>
+					<ThreeDots
+						visible={true}
+						height='35'
+						width='35'
+						color='#1d1e21'
+						radius='9'
+						ariaLabel='three-dots-loading'
+						wrapperStyle={{}}
+						wrapperClass=''
+					/>
+				</Link>
+			) : (
+				<Link
+					href='/cars'
+					className='link-show-all-vehicles'
+					onClick={() => {
+						setLoader(true);
+					}}
+				>
+					Show All Vehicles <FaLongArrowAltRight className='arrow' />
+				</Link>
+			)}
 		</section>
 	);
 }

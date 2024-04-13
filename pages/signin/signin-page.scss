@@ -2,6 +2,7 @@
 
 .signin-page {
 	@include center;
+	padding-top: 15vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -12,7 +13,7 @@
 		flex-direction: column;
 		justify-content: space-around;
 		width: 600px;
-		height: 500px;
+		height: 400px;
 		background-color: white;
 		border-radius: 10px;
 		padding: 15px;
@@ -42,6 +43,7 @@
 				box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 			}
 			button {
+				@include center;
 				margin: 20px auto;
 				padding: 10px 20px;
 				width: 80%;

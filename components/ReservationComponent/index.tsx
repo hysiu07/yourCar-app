@@ -33,8 +33,9 @@ function ReservationComponent({ reservation }) {
 		reservation.processing &&
 		showComponent && (
 			<div
-				className='reservation-component'
-				style={showReservationPanel ? { left: '0' } : { left: '-30%' }}
+				className={`reservation-component ${
+					showReservationPanel && 'show'
+				}`}
 			>
 				<ReservationComponentContent reservation={reservation} />
 

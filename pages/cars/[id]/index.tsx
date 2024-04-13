@@ -51,7 +51,13 @@ export default function CarPage({ car }) {
 				<div className='car-info-box'>
 					<h4 className='car-name'>{car.name}</h4>
 
-					<Link href={router.asPath} className='link-back-to-cars'>
+					<Link
+						href={router.asPath}
+						className='link-back-to-cars'
+						onClick={() => {
+							router.back();
+						}}
+					>
 						<AiOutlineClose size={20} />
 					</Link>
 				</div>
