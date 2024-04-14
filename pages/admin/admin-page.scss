@@ -92,6 +92,9 @@
 					border-radius: 10px;
 					border: 1px solid black;
 				}
+				button {
+					margin: 0 10px;
+				}
 			}
 			display: flex;
 			flex-direction: column;
@@ -166,7 +169,8 @@
 			}
 			form {
 				input {
-					padding: 5px;
+					padding: 10px;
+					border-radius: 10px;
 				}
 				button {
 					margin: 0 10px;

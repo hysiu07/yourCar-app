@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-    padding: 50px;
+	padding: 50px;
 	.car {
 		width: 60px;
 		height: 60px;
@@ -29,5 +29,11 @@
 	}
 	.vw {
 		background-image: url('../../../public/img/car-brands/vw.jpg');
+	}
+}
+
+@media (max-width: 576px) {
+	.brands-section {
+		display: none;
 	}
 }

@@ -23,8 +23,9 @@ export default function Testimonials() {
 			<h3>What people say about us?</h3>
 			<div className='slider-container'>
 				<Slider {...settings} className='slider'>
-					{testimonials.map((opinion) => (
+					{testimonials.map((opinion,index) => (
 						<OpinionCard
+							key={index}
 							mark={opinion.mark}
 							img={opinion.img}
 							text={opinion.text}

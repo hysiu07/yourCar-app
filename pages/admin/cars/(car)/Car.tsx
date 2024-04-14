@@ -50,11 +50,11 @@ export default function Car({ car }) {
 				</div>
 			</div>
 			<div className='buttons-box'>
-				<button >
+				<button disabled>
 					<IoClose size={20} />
 				</button>
 				<button
-					
+					disabled
 					onClick={() => {
 						setShowEditModal(true);
 					}}

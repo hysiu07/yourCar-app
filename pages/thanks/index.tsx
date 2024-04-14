@@ -4,12 +4,12 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { reset } from '@/redux/reservationinfo';
 import Link from 'next/link';
+import { GiConfirmed } from 'react-icons/gi';
 
 function ThanksPage({ reservation }) {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const [currentReservations] = useState(reservation);
-	console.log(currentReservations);
 
 	const [status, setStatus] = useState<'Paid' | 'Not Paid' | 'Error' | null>(
 		null
@@ -60,12 +60,15 @@ function ThanksPage({ reservation }) {
 	return (
 		<section className='thanks-page'>
 			{currentReservations.reserved ? (
-				<>
+				<div className='panel'>
 					<h3>Thank you for your order.</h3>
 					<h4>Your order number is : {currentReservations.orderId} </h4>
-					<Link href={'/'}>Home Page</Link>
 					<h3>Status: {status}</h3>
-				</>
+					<GiConfirmed size={100} className='confirm-icon' color='green' />
+					<Link href={'/'} className='link'>
+						Home Page
+					</Link>
+				</div>
 			) : (
 				<h2>Booking error!</h2>
 			)}

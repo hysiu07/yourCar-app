@@ -17,11 +17,11 @@ export default function AdminOrdersPage({ orders }) {
 	const [data, setOrders] = useState(orders.orders);
 	const formSearch = useRef<any | null>(null);
 	const router = useRouter();
-	const addOrder = async () => {
+	const findOrder = async () => {
 		const searchOrder = new FormData(formSearch.current);
 		const id = searchOrder.get('id');
 		try {
-			const response = await fetch('/api/orders/order', {
+			const response = await fetch('/api/orders/get', {
 				method: 'POST',
 				body: JSON.stringify(id),
 				headers: {
@@ -43,13 +43,13 @@ export default function AdminOrdersPage({ orders }) {
 	return (
 		<AdminPage>
 			<div className='orders-container'>
-				<form ref={formSearch} >
+				<form ref={formSearch}>
 					<input type='text' name='id' placeholder='Order ID' />
 					<button
 						className='btn-admin-page'
 						onClick={(e) => {
 							e.preventDefault();
-							addOrder();
+							findOrder();
 						}}
 					>
 						Search!

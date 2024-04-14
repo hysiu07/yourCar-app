@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Order({ order }) {
-	console.log(order.status);
 	return (
 		<div
 			className='order'
@@ -40,15 +39,15 @@ export default function Order({ order }) {
 					<span className='label'>Retur:</span>
 					<span>{order.returDate}</span>
 				</div>
+				<div className='box'>
+					<span className='label'>Status:</span>
+					<span>{order.status}</span>
+				</div>
 			</div>
 			<div className='order-info'>
 				<div className='box'>
 					<span className='label'>Number days:</span>
 					<span>{order.numberDays}</span>
-				</div>
-				<div className='box'>
-					<span className='label'>Status:</span>
-					<span>{order.status}</span>
 				</div>
 
 				<div className='box'>

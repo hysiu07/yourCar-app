@@ -6,6 +6,7 @@ import { connect, useDispatch } from 'react-redux';
 import { useSession } from 'next-auth/react';
 import PaymentBtn from './PaymentBtn';
 import { addOrderId, addReservation } from '@/redux/reservationinfo';
+import { handleClientScriptLoad } from 'next/script';
 
 const ReservationBtn = ({ user, reservation }) => {
 	const dispatch = useDispatch();
@@ -54,6 +55,7 @@ const ReservationBtn = ({ user, reservation }) => {
 			console.error('Error:', error.message);
 		}
 	};
+
 	return (
 		<button
 			className={`reservation-btn ${reservation.reserved && 'disabled-btn'}`}
@@ -70,7 +72,9 @@ const ReservationBtn = ({ user, reservation }) => {
 
 function SummaryPage({ reservation }) {
 	const { data, data: session } = useSession();
-
+	const handleCopyToClipboard = () => {
+		navigator.clipboard.writeText('4242 4242 4242 4242');
+	};
 	return (
 		<BaseLayout>
 			<div className='summary-page'>
@@ -84,6 +88,14 @@ function SummaryPage({ reservation }) {
 					</div>
 				) : (
 					<>
+						<div
+							className='card-container'
+							onClick={() => {
+								handleCopyToClipboard();
+							}}
+						>
+							Copy Visa Card 4242 4242 4242 4242
+						</div>
 						<ReservationBtn user={session.user} reservation={reservation} />
 						<PaymentBtn user={session.user} />
 					</>
