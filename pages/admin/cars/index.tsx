@@ -24,7 +24,6 @@ export function AddCarModal({ setShowModal, car }) {
 
 	const handleImagePreview = (e) => {
 		const url = window.URL.createObjectURL(e.target.files[0]);
-		console.log('url', url);
 		setPrevPicture(url);
 	};
 	const handleAddCar = async (e) => {
@@ -57,15 +56,11 @@ export function AddCarModal({ setShowModal, car }) {
 			router.push('/admin/cars');
 			setShowModal(false);
 		}
-	
 	};
 	return (
 		<div className='add-car-modal'>
 			<div className='panel'>
-				<button
-					className='close-modal'
-					onClick={()=> setShowModal(false)}
-				>
+				<button className='close-modal' onClick={() => setShowModal(false)}>
 					X
 				</button>
 				{prevPicture && <img src={prevPicture} alt='car-picture' />}
@@ -127,7 +122,6 @@ export function AddCarModal({ setShowModal, car }) {
 					</select>
 					<label htmlFor='picture'>Picture</label>
 					<input
-						// value={car && car.img }
 						type='file'
 						name='picture'
 						onChange={handleImagePreview}
@@ -164,8 +158,8 @@ export default function AdminCarsPage({ cars }) {
 				Add Car
 			</button>
 			<div className='cars-container'>
-				{cars.map((car) => (
-					<Car car={car}></Car>
+				{cars.map((car, index) => (
+					<Car car={car} key={index}></Car>
 				))}
 			</div>
 		</AdminPage>
