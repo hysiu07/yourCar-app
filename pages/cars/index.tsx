@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BaseLayout from '@/components/BaseLayout';
 import getAllCars from '@/services/cars/getAllCars';
 import Car from '../cars/Car';
