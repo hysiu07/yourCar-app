@@ -8,15 +8,21 @@ import PaymentBtn from './PaymentBtn';
 import { addOrderId, addReservation } from '@/redux/reservationinfo';
 import { handleClientScriptLoad } from 'next/script';
 
-const ReservationBtn = ({ user, reservation }) => {
-	const dispatch = useDispatch();
-	const [equipments, setEquipmnts] = useState<string[] | []>([]);
+interface ReservationProps {
+	[key: string]: any;
+}
 
-	reservation.equipments.forEach((eq: any) => {
-		if (!equipments.includes(eq.title)) {
-			setEquipmnts((prev) => [...prev, eq.title]);
-		}
-	});
+const ReservationBtn = ({ user, reservation }: ReservationProps) => {
+	const dispatch = useDispatch();
+	const [equipments, setEquipmnts] = useState<string[]>([]);
+
+	if (reservation && reservation.equipments) {
+		reservation.equipments.forEach((eq) => {
+			if (!equipments.includes(eq.title)) {
+				setEquipmnts((prev) => [...prev, eq.title]);
+			}
+		});
+	}
 	const addOrder = async (reservation) => {
 		try {
 			const payload = {
@@ -104,7 +110,7 @@ function SummaryPage({ reservation }) {
 		</BaseLayout>
 	);
 }
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: { reservationInfo: any }) => {
 	return {
 		reservation: state.reservationInfo,
 	};

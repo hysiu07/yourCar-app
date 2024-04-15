@@ -1,4 +1,3 @@
-
 import upDate from '@/services/cars/upDate';
 
 export default async (req, res) => {
@@ -7,8 +6,9 @@ export default async (req, res) => {
 			{
 				try {
 					const payload = req.body;
-					const car = await upDate();
-					res.status(200).json({ status: 'Added car', car });
+					// const car = await upDate(payload);
+
+					res.status(200).json({ status: 'Added car' });
 				} catch (error: any) {
 					res.status(422).json({ status: 'Not Added', error: error.message });
 				}

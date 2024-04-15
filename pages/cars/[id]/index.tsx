@@ -11,9 +11,13 @@ import { FaSuitcase } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 
+
 export const getStaticPaths = async () => {
 	const cars = await getAllCars();
-	const paths = cars?.map((car) => ({ params: { id: String(car.id) } }));
+
+	const paths = cars?.map((car) => ({
+		params: { id: String(car.id) },
+	}));
 
 	return {
 		paths,

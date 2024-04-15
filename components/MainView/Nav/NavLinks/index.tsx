@@ -10,12 +10,20 @@ type NavLinkPropsType = {
 	showMenu: boolean;
 	showMenuHandler: React.Dispatch<React.SetStateAction<boolean>>;
 };
+type User =
+	| {
+			name?: string | null | undefined;
+			email?: string | null | undefined;
+			image?: string | null | undefined;
+			role?: string | null | undefined; 
+	  }
+	| undefined;
 export default function NavLinks({
 	showMenu,
 	showMenuHandler,
 }: NavLinkPropsType) {
 	const { data, data: session } = useSession();
-	
+	const sessionUser: User = session?.user;
 
 	const router = useRouter();
 	const [showLinks, setShowLinks] = useState<boolean>(true);
@@ -49,7 +57,7 @@ export default function NavLinks({
 					>
 						Sign out
 					</Link>
-					{session.user?.role === 'admin' && (
+					{sessionUser?.role === 'admin' && (
 						<Link className='logi-in-link' href='/admin'>
 							Admin
 						</Link>

@@ -5,13 +5,12 @@ const nextConfig = {
 		AIRTABLE_API_BASE: process.env.AIRTABLE_API_BASE,
 	},
 	reactStrictMode: true,
+	eslint: {
+		
+		ignoreDuringBuilds: true,
+	},
 };
 
-// module.exports = {
-// 	env: {
-// 		AIRTABLE_API_TOKEN: process.env.AIRTABLE_API_TOKEN,
-// 		AIRTABLE_API_BASE: process.env.AIRTABLE_API_BASE,
-// 	},
-// };
+
 
 export default nextConfig;

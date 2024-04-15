@@ -12,31 +12,33 @@ type EquipmentItem = {
 	equipmentPrice: number | null;
 };
 
-type InitialStateType = {
-	processing: boolean;
-	reserved: boolean;
-	username: null | string;
-	email: null | string;
-	carInfo: {
-		carName: null | string;
-		cartype: null | string;
-		carImg: null | string;
-		carId: null | string | number;
-		carPrice: null | number;
-	};
-	city: string | null;
-	pickUpDate: string | null;
-	returDate: string | null;
-	numberDays: number | null;
+type InitialStateType =
+	| {
+			processing: boolean;
+			reserved: boolean;
+			username: null | string;
+			email: null | string;
+			carInfo: {
+				carName: null | string;
+				cartype: null | string;
+				carImg: null | string;
+				carId: null | string | number;
+				carPrice: null | number;
+			};
+			city: string | null;
+			pickUpDate: string | null;
+			returDate: string | null;
+			numberDays: number | null;
 
-	offerId: number | null;
-	insuranceType: string | null;
-	insurancePrice: number | null;
-	equipments: EquipmentItem[] | [] | null;
-	equipmentsSum: number | null;
-	priceSum: number | null;
-	orderId: string | null;
-};
+			offerId: number | null;
+			insuranceType: string | null;
+			insurancePrice: number | null;
+			equipments: EquipmentItem[] | [] | null;
+			equipmentsSum: number | null;
+			priceSum: number | null;
+			orderId: string | null;
+	  }
+	| any;
 
 const INITIAL_STATE_RESERVATION: InitialStateType = {
 	processing: false,

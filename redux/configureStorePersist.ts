@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import rootReducers from './rootReducer';
 
 
+
 const persistConfig = {
 	key: 'root',
 	storage,
