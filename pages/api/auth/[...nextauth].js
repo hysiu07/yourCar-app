@@ -3,6 +3,7 @@ import authorizeUser from '../../../services/users/authorize';
 import NextAuth from 'next-auth/next';
 
 export default NextAuth({
+	secret: process.env.NEXTAUTH_SECRET,
 	providers: [
 		CredentialsProvider({
 			// The name to display on the sign in form (e.g. "Sign in with...")
@@ -22,11 +23,10 @@ export default NextAuth({
 					email: credentials.email,
 					password: credentials.password,
 				});
-				
 
 				if (user) {
 					// Any object returned will be saved in `user` property of the JWT
-			
+
 					return user;
 				} else {
 					// If you return null then an error will be displayed advising the user to check their details.
