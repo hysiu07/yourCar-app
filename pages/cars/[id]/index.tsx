@@ -11,7 +11,6 @@ import { FaSuitcase } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 
-
 export const getStaticPaths = async () => {
 	const cars = await getAllCars();
 
