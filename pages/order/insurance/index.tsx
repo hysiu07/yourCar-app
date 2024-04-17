@@ -164,11 +164,197 @@ export default function InsuracnePage() {
 							</tr>
 						</tbody>
 					</table>
+
+					{/* table for mobile */}
+
+					<div className='table-for-mobile'>
+						<div className='insurance-type'>
+							<div className='icon-box'>
+								<IoShieldOutline size={60} className='icon-shield' />
+								<p>Basic Protect</p>
+							</div>
+							<div className='box'>
+								<span>Price:</span>
+								<p>0 USD</p>
+							</div>
+							<div className='box'>
+								<span>Deposit:</span>
+								<p>1000 USD</p>
+							</div>
+							<div className='box'>
+								<span>
+									CDW (AC)/TP (Theft protection) - Reduced liability for damage
+									or theft
+								</span>
+
+								<RxCheckCircled size={25} className='active' />
+							</div>
+							<div className='box'>
+								<span>CDW+ - Insurance coverage with reduced excess</span>
+
+								<RxCheckCircled size={25} className='desactive' />
+							</div>
+							<div className='box'>
+								<span>
+									SCDW - Full coverage of own contribution in case of vehicle
+									damage/injuries
+								</span>
+
+								<RxCheckCircled size={25} className='desactive' />
+							</div>
+							<div className='box'>
+								<span>
+									WUG (Wheels, Undercarriage, Glass) - Protection for wheels,
+									undercarriage, and glass
+								</span>
+
+								<RxCheckCircled size={25} className='desactive' />
+							</div>
+							<div className='box'>
+								<span>Unlimited mileage</span>
+
+								<RxCheckCircled size={25} className='active' />
+							</div>
+							<button
+								className={`btn-choose ${
+									insuracne === 'basic' ? 'selected-insurance-btn' : ''
+								}`}
+								onClick={() => {
+									setInsurance('basic'), dispatch(addInsurance('basic', 0));
+								}}
+							>
+								Choose
+							</button>
+						</div>
+
+						{/* medium insurance */}
+						<div className='insurance-type'>
+							<div className='icon-box'>
+								<IoShieldHalfSharp size={60} className='icon-shield' />
+								<p>Medium Protect</p>
+							</div>
+							<div className='box'>
+								<span>Price:</span>
+								<p>20 USD</p>
+							</div>
+							<div className='box'>
+								<span>Deposit:</span>
+								<p>500 USD</p>
+							</div>
+							<div className='box'>
+								<span>
+									CDW (AC)/TP (Theft protection) - Reduced liability for damage
+									or theft
+								</span>
+
+								<RxCheckCircled size={25} className='active' />
+							</div>
+							<div className='box'>
+								<span>CDW+ - Insurance coverage with reduced excess</span>
+
+								<RxCheckCircled size={25} className='active' />
+							</div>
+							<div className='box'>
+								<span>
+									SCDW - Full coverage of own contribution in case of vehicle
+									damage/injuries
+								</span>
+
+								<RxCheckCircled size={25} className='desactive' />
+							</div>
+							<div className='box'>
+								<span>
+									WUG (Wheels, Undercarriage, Glass) - Protection for wheels,
+									undercarriage, and glass
+								</span>
+
+								<RxCheckCircled size={25} className='desactive' />
+							</div>
+							<div className='box'>
+								<span>Unlimited mileage</span>
+
+								<RxCheckCircled size={25} className='active' />
+							</div>
+							<button
+								className={`btn-choose ${
+									insuracne === 'medium' ? 'selected-insurance-btn' : ''
+								}`}
+								onClick={() => {
+									setInsurance('medium'), dispatch(addInsurance('medium', 20));
+								}}
+							>
+								Choose
+							</button>
+						</div>
+						{/* full protect */}
+						<div className='insurance-type'>
+							<div className='icon-box'>
+								<IoShieldSharp size={60} className='icon-shield' />
+								<p>Full Protect</p>
+							</div>
+							<div className='box'>
+								<span>Price:</span>
+								<p>050 USD</p>
+							</div>
+							<div className='box'>
+								<span>Deposit:</span>
+								<p>100 USD</p>
+							</div>
+							<div className='box'>
+								<span>
+									CDW (AC)/TP (Theft protection) - Reduced liability for damage
+									or theft
+								</span>
+
+								<RxCheckCircled size={25} className='active' />
+							</div>
+							<div className='box'>
+								<span>CDW+ - Insurance coverage with reduced excess</span>
+
+								<RxCheckCircled size={25} className='active' />
+							</div>
+							<div className='box'>
+								<span>
+									SCDW - Full coverage of own contribution in case of vehicle
+									damage/injuries
+								</span>
+
+								<RxCheckCircled size={25} className='active' />
+							</div>
+							<div className='box'>
+								<span>
+									WUG (Wheels, Undercarriage, Glass) - Protection for wheels,
+									undercarriage, and glass
+								</span>
+
+								<RxCheckCircled size={25} className='active' />
+							</div>
+							<div className='box'>
+								<span>Unlimited mileage</span>
+
+								<RxCheckCircled size={25} className='active' />
+							</div>
+							<button
+								className={`btn-choose ${
+									insuracne === 'full' ? 'selected-insurance-btn' : ''
+								}`}
+								onClick={() => {
+									setInsurance('full'), dispatch(addInsurance('full', 50));
+								}}
+							>
+								Choose
+							</button>
+						</div>
+					</div>
 				</div>
 				{insuracne !== '' && (
-					<Link href={'/order/insurance/equipment'} className='btn-continue' onClick={() => {
-						setLoaderGoOn(true)
-					}}>
+					<Link
+						href={'/order/insurance/equipment'}
+						className='btn-continue'
+						onClick={() => {
+							setLoaderGoOn(true);
+						}}
+					>
 						{loaderGoOn ? (
 							<ThreeDots
 								visible={true}

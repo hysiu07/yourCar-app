@@ -68,7 +68,23 @@
 		&__container {
 			.text-container {
 				.main-title {
-					font-size: 5rem;
+					font-size: 4.5rem;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 350px) {
+	.header {
+		padding: 30px;
+		&__container {
+			.text-container {
+				.main-title {
+					position: relative;
+					top: -50px;
+				}
+				.second-title {
+					display: none;
 				}
 			}
 		}

@@ -4,7 +4,9 @@
 	flex-direction: column;
 	padding: 5vh 50px 50px 50px;
 	width: 100vw;
-
+	.table-for-mobile {
+		display: none;
+	}
 	h3 {
 		text-align: center;
 	}
@@ -47,7 +49,6 @@
 				}
 			}
 			font-size: 1.6rem;
-
 			font-family: 'Roboto Condensed', sans-serif;
 			tr {
 				td {
@@ -64,19 +65,17 @@
 				.price {
 					font-weight: bold;
 				}
-				.btn-choose {
-					padding: 10px 20px;
-					border-radius: 10px;
-				}
 				.last-row {
 					border-bottom: none;
 				}
 				.btn-choose {
-					cursor: pointer;
+					padding: 10px 20px;
+					border-radius: 10px;
 					font-weight: bold;
 					border: 1px solid $gray-color;
 					background-color: white;
 					color: $gray-color;
+					cursor: pointer;
 				}
 				.selected-insurance-btn {
 					color: white;
@@ -90,7 +89,6 @@
 	.insurance-card {
 		display: flex;
 		flex-direction: column;
-
 		align-items: center;
 		padding: 20px;
 		margin-bottom: 50px;
@@ -116,6 +114,70 @@
 		}
 		hr {
 			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	.insurance-container {
+		.btn-continue {
+			padding: 8px 16px;
+			font-size: 2rem;
+			margin: 0 auto;
+		}
+		.insurance-packages {
+			table {
+				display: none;
+			}
+			.table-for-mobile {
+				display: block;
+				.insurance-type {
+					margin-bottom: 20px;
+					padding: 10px;
+					box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+					border-radius: 10px;
+					.icon-box {
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						width: 100%;
+						color: $main-color;
+						p {
+							color: $main-color;
+						}
+					}
+					.box {
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						width: 100%;
+						padding: 5px;
+						span {
+							font-size: 1.4rem;
+							font-family: 'Roboto Condensed', sans-serif;
+							width: 50%;
+						}
+						.active {
+							color: $main-color;
+						}
+					}
+					.btn-choose {
+						padding: 10px 20px;
+						border-radius: 10px;
+						font-weight: bold;
+						border: 1px solid $gray-color;
+						background-color: white;
+						color: $gray-color;
+						cursor: pointer;
+					}
+					.selected-insurance-btn {
+						color: white;
+						background-color: $main-color;
+						border: 1px solid $main-color;
+					}
+				}
+			}
 		}
 	}
 }

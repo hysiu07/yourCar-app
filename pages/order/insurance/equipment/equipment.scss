@@ -2,7 +2,6 @@
 .equipment-page {
 	display: flex;
 	flex-direction: column;
-
 	padding: 5vh 50px 50px 50px;
 	width: 100vw;
 
@@ -11,7 +10,6 @@
 		justify-content: center;
 		align-items: center;
 		align-self: flex-end;
-		// margin: 50px auto;
 		text-align: center;
 		padding: 10px 20px;
 		width: 150px;
@@ -114,6 +112,44 @@
 			border: 2px solid white;
 			color: white;
 			background-color: $main-color;
+		}
+	}
+}
+@media (max-width: 768px) {
+	.equipment-page {
+		padding: 10vh 20px 20px 20px;
+
+		.additive {
+			width: 100%;
+			height: auto;
+			.describing {
+				font-size: 1.2rem;
+			}
+		}
+	}
+}
+@media (max-width: 576px) {
+	.equipment-page {
+		.additive {
+			display: flex;
+			flex-direction: column;
+			.text {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				margin: 20px 0px;
+				width: 80%;
+			}
+			.price {
+				border-left: none;
+				border-right: none;
+			}
+			.btn-add {
+				border: 1px solid white;
+				color: white;
+				background-color: $main-color;
+			}
 		}
 	}
 }
