@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 					},
 				],
 				mode: 'payment',
-				success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/thanks`,
+				success_url: `http://localhost:3000/thanks`,
 				cancel_url: `${req.headers.origin}/?canceled=true`,
 			});
 

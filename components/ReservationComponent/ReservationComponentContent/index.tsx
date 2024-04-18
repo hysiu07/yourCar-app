@@ -6,14 +6,18 @@ import { useDispatch } from 'react-redux';
 import { reset } from '@/redux/reservationinfo';
 import { useRouter } from 'next/router';
 
+type PropsType = {
+	reservation: any;
+	closePanel?: (isOpen: boolean) => void | undefined;
+};
+
 export default function ReservationComponentContent({
 	reservation,
 	closePanel,
-}) {
+}: PropsType) {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const { pathname } = router;
-
 
 	return reservation.processing ? (
 		<div className='reservation-component-content'>
@@ -21,7 +25,9 @@ export default function ReservationComponentContent({
 				<button
 					className='close-reservation-btn'
 					onClick={() => {
-						closePanel(false);
+						if (closePanel) {
+							closePanel(false);
+						}
 					}}
 				>
 					X
