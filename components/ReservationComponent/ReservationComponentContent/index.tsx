@@ -5,12 +5,31 @@ import { FaCalendar } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { reset } from '@/redux/reservationinfo';
 import { useRouter } from 'next/router';
-export default function ReservationComponentContent({ reservation }) {
+
+export default function ReservationComponentContent({
+	reservation,
+	closePanel,
+}) {
 	const dispatch = useDispatch();
 	const router = useRouter();
+	const { pathname } = router;
+
+
 	return reservation.processing ? (
 		<div className='reservation-component-content'>
-			<button className='close-reservation-btn'>X</button>
+			{pathname !== '/order/insurance/equipment/summary' ? (
+				<button
+					className='close-reservation-btn'
+					onClick={() => {
+						closePanel(false);
+					}}
+				>
+					X
+				</button>
+			) : (
+				''
+			)}
+
 			<h3>Your Reservation</h3>
 			<button
 				className='btn-cancel-reservation'

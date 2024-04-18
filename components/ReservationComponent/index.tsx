@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -33,11 +32,12 @@ function ReservationComponent({ reservation }) {
 		reservation.processing &&
 		showComponent && (
 			<div
-				className={`reservation-component ${
-					showReservationPanel && 'show'
-				}`}
+				className={`reservation-component ${showReservationPanel && 'show'}`}
 			>
-				<ReservationComponentContent reservation={reservation} />
+				<ReservationComponentContent
+					reservation={reservation}
+					closePanel={setShowReservationPanel}
+				/>
 
 				<div
 					className='reservation-component__btn-show-panel'

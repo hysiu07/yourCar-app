@@ -17,7 +17,7 @@ export default async function handler(req, res) {
 				success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/thanks`,
 				cancel_url: `${req.headers.origin}/?canceled=true`,
 			});
-		
+
 			res.redirect(303, session.url);
 		} catch (err) {
 			res.status(err.statusCode || 500).json(err.message);
