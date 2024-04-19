@@ -19,9 +19,10 @@ export default function User({ user }) {
 				'Content-Type': 'application/json',
 			},
 		});
-
+		console.log(response.ok);
 		if (response.ok) {
-			router.push('/admin/users');
+			// router.push(`${process.env.BASE_URL}/admin/users`);
+			router.reload();
 		}
 	};
 
