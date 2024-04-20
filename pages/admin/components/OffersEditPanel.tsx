@@ -26,9 +26,6 @@ export default function OfferEditPanel({
 						<option value='szczecin'>szczecin</option>
 						<option value='poznan'>poznan</option>
 					</select>
-
-					<label htmlFor='price'>Price: </label>
-					<input type='number' name='price' defaultValue={offer.price} />
 					<label htmlFor='car'>Car:</label>
 					<select name='car' defaultValue={offer.cars[0]}>
 						{cars.map((car) => {

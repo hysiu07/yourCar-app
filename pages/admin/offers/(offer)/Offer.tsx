@@ -22,7 +22,7 @@ export default function Offer({ offer, cars }) {
 		});
 
 		if (response.ok) {
-			router.push('/admin/offers');
+			router.reload();
 		}
 	};
 
@@ -43,10 +43,9 @@ export default function Offer({ offer, cars }) {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-		});
-
+		})
 		if (response.ok) {
-			router.push('/admin/offers');
+			router.reload();
 			setShowEditPanel(false);
 		}
 	};

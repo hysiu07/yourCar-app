@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Order({ order }) {
+
 	return (
 		<div
 			className='order'
@@ -17,11 +18,11 @@ export default function Order({ order }) {
 				</div>
 				<div className='box'>
 					<span className='label'>User email:</span>
-					<span>{order.email[0]}</span>
+					<span>{order.email}</span>
 				</div>
 				<div className='box'>
 					<span className='label'>User name:</span>
-					<span>{order.username[0]}</span>
+					<span>{order.username}</span>
 				</div>
 				<div className='box'>
 					<span className='label'>Location:</span>

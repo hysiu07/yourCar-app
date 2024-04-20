@@ -21,7 +21,7 @@ export default function OfferAddOffer({ closeAddPanel, cars }) {
 		});
 
 		if (response.ok) {
-			router.push('/admin/offers');
+			router.reload()
 			closeAddPanel(false);
 		}
 	};

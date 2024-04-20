@@ -18,8 +18,6 @@ export const getServerSideProps = async () => {
 
 export default function AdminOffersPage({ offers, cars }) {
 	const [showAddPanel, setShowAddPanel] = useState(false);
-
-
 	return (
 		<AdminPage>
 			<button

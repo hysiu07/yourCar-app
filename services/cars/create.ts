@@ -20,7 +20,7 @@ const create = async (payload) => {
 			},
 		},
 	]);
-	console.log(car, 'car');
+	
 	return car;
 };
 export default create;

@@ -19,9 +19,8 @@ export default function User({ user }) {
 				'Content-Type': 'application/json',
 			},
 		});
-		console.log(response.ok);
+
 		if (response.ok) {
-			// router.push(`${process.env.BASE_URL}/admin/users`);
 			router.reload();
 		}
 	};
@@ -46,7 +45,7 @@ export default function User({ user }) {
 			},
 		});
 		if (response.ok) {
-			router.push('/admin/users');
+			router.reload();
 			setShowEditPanel(false);
 		}
 	};
@@ -106,6 +105,7 @@ export default function User({ user }) {
 
 			<div className='buttons-box'>
 				<button
+					disabled={user.role === 'admin' ? true : false}
 					onClick={() => {
 						setShowPopUp(true);
 					}}
@@ -113,6 +113,7 @@ export default function User({ user }) {
 					<IoClose size={20} />
 				</button>
 				<button
+					disabled={user.role === 'admin' ? true : false}
 					onClick={() => {
 						setShowEditPanel(true);
 					}}

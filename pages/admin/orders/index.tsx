@@ -57,7 +57,7 @@ export default function AdminOrdersPage({ orders }) {
 					<button
 						className='btn-admin-page'
 						onClick={() => {
-							router.push('/admin/orders');
+							router.reload();
 						}}
 					>
 						Reset

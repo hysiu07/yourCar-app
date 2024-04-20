@@ -5,7 +5,11 @@ const getAllCars = async () => {
 		.select({ sort: [{ field: 'type' }] })
 		.firstPage();
 	if (cars) {
-		return cars.map((car) => ({ id: car.id, ...car.fields }));
+		return cars.map((car) => ({
+			id: car.id,
+			...car.fields,
+			airtableId: car.id,
+		}));
 	}
 };
 export default getAllCars;
