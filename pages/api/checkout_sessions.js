@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 				],
 				mode: 'payment',
 
-				success_url: `${process.env.VERCEL}/thanks`,
+				success_url: `https://${process.env.VERCEL}/thanks`,
 				cancel_url: `${req.headers.origin}/?canceled=true`,
 			});
 
