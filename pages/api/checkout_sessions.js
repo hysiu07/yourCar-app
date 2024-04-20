@@ -12,8 +12,8 @@ export default async function handler(req, res) {
 					},
 				],
 				mode: 'payment',
-				// success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/thanks`,
-				success_url: `https://your-car-app.vercel.app/thanks`,
+
+				success_url: `${process.env.VERCEL}/thanks`,
 				cancel_url: `${req.headers.origin}/?canceled=true`,
 			});
 
