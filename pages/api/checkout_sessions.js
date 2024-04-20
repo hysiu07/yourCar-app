@@ -3,18 +3,17 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 export default async function handler(req, res) {
 	if (req.method === 'POST') {
 		try {
-			// Create Checkout Sessions from body params.
 			const price = req.body;
 			const session = await stripe.checkout.sessions.create({
 				line_items: [
 					{
-						// Provide the exact Price ID (for example, pr_1234) of the product you want to sell
 						price: 'price_1P1XOMIW9HXEwFUkIPC74Iq7',
 						quantity: 1,
 					},
 				],
 				mode: 'payment',
-				success_url: `http://localhost:3000/thanks`,
+				// success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/thanks`,
+				success_url: `https://your-car-app.vercel.app/thanks`,
 				cancel_url: `${req.headers.origin}/?canceled=true`,
 			});
 
