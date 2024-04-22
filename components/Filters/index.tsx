@@ -7,7 +7,7 @@ export default function Filters({
 	offersArray,
 }) {
 	const [sortType, setSortType] = useState<string>('allVehicles');
-	const [sortBy, setSortBy] = useState('');
+	const [sortBy, setSortBy] = useState('Price Low to Hight');
 
 	const sortTypeCar = (offers, sortType) => {
 		setSortType(sortType);
@@ -96,7 +96,7 @@ export default function Filters({
 			</div>
 			<div className='sort-btn'>
 				<select name='sort-car' onChange={handleSortPriceChange} value={sortBy}>
-					<option value=''>Sort</option>
+					{/* <option value='Price Low to Hight'>Sort</option> */}
 					<option value='Price Low to Hight'>Price Low-to-High</option>
 					<option value='Price Hight to Low'>Price High-to-Low</option>
 				</select>

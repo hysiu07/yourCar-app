@@ -1,10 +1,15 @@
 # YourCar-app - Demo
 
-## User Login,Admin Panel (only laptop screen)
+## User Login, Admin Panel (only laptop screen)
 
 If you log in to this profile, you can access the admin panel.<br>
-user: hysiu07@gmail.com
-password: 111
+user: hysiu07@gmail.com <br>
+password: 111 <br>
+
+## Introduction
+
+If you log in to the admin page, you can manage the application with dynamic resource management in Airtable. When you place a car order, its status automatically changes, making it unavailable for other users. Additionally, when you add a new car, you can select it when creating an offer. Feel free to try it out! You'll discover a variety of features in the car reservation system, including payment processing with a sample Stripe card and the ability to save reservation numbers for easy lookup in the admin panel. Moreover, you'll find numerous other functionalities such as filtering, database connections, and selecting additional equipment. Enjoy exploring!
+
 
 ## Description
 
