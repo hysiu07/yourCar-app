@@ -58,7 +58,7 @@ export default function NavLinks({
 						Sign out
 					</Link>
 					{sessionUser?.role === 'admin' && (
-						<Link className='logi-in-link' href='/admin'>
+						<Link className='logi-in-link' href='/admin/users'>
 							Admin
 						</Link>
 					)}
